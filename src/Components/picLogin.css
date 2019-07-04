@@ -1,0 +1,27 @@
+.picContainer {
+	border: 1px solid black;
+	/*margin: 5px;*/
+	height: 50vh;
+	width: 50vh;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 40px;
+}
+
+.pixels{
+	border: 1px solid black;
+	width: 16vh;
+	height: 16vh;
+	opacity: 0.7;
+	background-color: gold;
+}
+
+.pixels:hover{
+	opacity: 1;
+}
+body{
+	justify-content: center;
+	display: flex;
+}
