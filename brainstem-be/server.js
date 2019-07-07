@@ -123,7 +123,43 @@ app.post('/logIn', (req, res) => {
 	// 	}
 
 	console.log("Connecting!", req.body)
-	res.send({"reponse": "Hello World!"})
+	res.send({"reponse": "finish log in"})
+
+})
+
+app.post('/register', (req, res) => {
+	const {fname, lname, password} = req.body;
+	// if (this.state.fname != this.state.dbResponse.fname || this.state.lname != this.state.dbResponse.lname){
+	// 		console.log("first loop")
+	// 		this.setState({
+	// 			logIn: false,
+	// 			inputPassword: [],
+	// 			fname: "",
+	// 			lname: "",
+	// 		})
+	// 		return "Invalid credentials"
+	// 	} else if(this.checkPassword(this.state.inputPassword, this.state.dbResponse.password) === false){
+	// 		console.log("2nd loop", this.state.inputPassword, this.state.dbResponse.password)
+	// 		this.setState({
+	// 			logIn: false,
+	// 			inputPassword: [],
+	// 			fname: "",
+	// 			lname: "",
+	// 		})
+	// 		return "Invalid password"
+	// 	} else{
+	// 		console.log("3rd loop")
+	// 		this.setState({
+	// 			logIn: true,
+	// 			inputPassword: [],
+	// 			fname: "",
+	// 			lname: "",
+	// 		})
+	// 		return "You are in!"
+	// 	}
+
+	console.log("Connecting!", req.body)
+	res.send({"reponse": "finish register"})
 
 })
 

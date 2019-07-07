@@ -40,6 +40,7 @@ input {
 }
 
 button {
+	color: white;
 	width: 10vh;
 	height: 5vh;
 	margin: 5px;
