@@ -1,4 +1,13 @@
 import React, { Component } from "react"
+import winter from "../images/winter.jpg"
+import worms from "../images/worms.jpg"
+import volleyball from "../images/volleyball.jpg"
+import soccer from "../images/soccer.jpg"
+import gummies from "../images/gummies.jpg"
+import chocolate from "../images/chocolate.jpg"
+import forest from "../images/forest.jpg"
+import desert from "../images/desert.jpg"
+import basketball from "../images/basketball.jpg"
 import "./picLogin.css"
 
 class PicLogin extends Component {
@@ -20,7 +29,7 @@ class PicLogin extends Component {
 
 	checkPassword = (arr1, arr2) => {
 		for (let i=0; i<arr1.length; i++) {
-			if (arr1[i] != arr2[i]){
+			if (arr1[i] !== arr2[i]){
 				return false
 			}
 		}
@@ -42,33 +51,42 @@ class PicLogin extends Component {
      return response;
 	}
 
-	onClickPixels = (e, i) => {
-		console.log(i)
+	onClickPixels = (e) => {
+		console.log(e.target.name)
 		const pixelInput = this.state.inputPassword
-		pixelInput.push(i)
+		pixelInput.push(e.target.name)
+		document.getElementById(e.target.name).className += " clicked";
 		this.setState({
 			inputPassword: pixelInput
 		})
+	}
+
+	resetPad = () => {
+		let list = ["soccer", "basketball", "volleyball", "desert", "winter", "forest", "gummies", "chocolate", "worms"]
+		this.setState({inputPassword: []})
+		list.forEach(x => document.getElementById(x).className = "pixels")
 	}
 
 render (props) {
 	console.log(this.state)
 		return (
 			<div>
-				<input onChange={this.onChange} id='fname' type='text' placeholder='Enter firstname here' value={this.state.fname}></input>
-				<input onChange={this.onChange} id='lname' type='text' placeholder='Enter lastname here' value={this.state.lname}></input>
-				<button onClick={this.handleSubmit} className = "btn"> Submit </button>
+				<input onChange={this.onChange} id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
+				<input onChange={this.onChange} id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
+				<br />
 				<div className = "picContainer">
-					<div onClick={(e) => this.onClickPixels(e,"1")} className = "pixels" name = "1"> 1 </div>
-					<div onClick={(e) => this.onClickPixels(e,"2")} className = "pixels" name = "2"> 2 </div>
-					<div onClick={(e) => this.onClickPixels(e,"3")} className = "pixels" name = "3"> 3 </div>
-					<div onClick={(e) => this.onClickPixels(e,"4")} className = "pixels" name = "4"> 4 </div>
-					<div onClick={(e) => this.onClickPixels(e,"5")} className = "pixels" name = "5"> 5 </div>
-					<div onClick={(e) => this.onClickPixels(e,"6")} className = "pixels" name = "6"> 6 </div>
-					<div onClick={(e) => this.onClickPixels(e,"7")} className = "pixels" name = "7"> 7 </div>
-					<div onClick={(e) => this.onClickPixels(e,"8")} className = "pixels" name = "8"> 8 </div>
-					<div onClick={(e) => this.onClickPixels(e,"9")} className = "pixels" name = "9"> 9 </div>
+					<img src = {soccer} alt = "soccer ball" onClick={this.onClickPixels} className = "pixels" name = "soccer" id = "soccer" />
+					<img src = {basketball} alt = "basketball" onClick={this.onClickPixels} className = "pixels" name = "basketball" id = "basketball"/>
+					<img src = {volleyball} alt = "volleyball"onClick={this.onClickPixels} className = "pixels" name = "volleyball" id = "volleyball"/>
+					<img src = {desert} alt = "desert" onClick = {this.onClickPixels} className = "pixels" name = "desert" id = "desert"/>
+					<img src = {winter} alt = "winter" onClick = {this.onClickPixels} className = "pixels" name = "winter" id = "winter"/>
+					<img src = {forest} alt = "forest" onClick = {this.onClickPixels} className = "pixels" name = "forest" id = "forest"/>
+					<img src = {gummies} alt = "gummies" onClick = {this.onClickPixels} className = "pixels" name = "gummies" id = "gummies"/>
+					<img src = {chocolate} alt = "chocolate" onClick = {this.onClickPixels} className = "pixels" name = "chocolate" id = "chocolate"/>
+					<img src = {worms} alt = "worms" onClick = {this.onClickPixels} className = "pixels" name = "worms" id = "worms"/>
 				</div>
+				<button onClick={this.handleSubmit} className = "btn"> Submit </button>
+				<button onClick={this.resetPad} className = "btn"> Reset </button>
 			</div>
 			)
 		}
