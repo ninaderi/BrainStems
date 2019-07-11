@@ -14,8 +14,9 @@ class PicLogin extends Component {
 	constructor(props) {
 		super(props) 
 		this.state = {
-		inputPassword: [],
-		logIn: false 
+		inputPassword: "",
+		logIn: false,
+		view: 'login' 
 		}
 
 	}
@@ -36,8 +37,23 @@ class PicLogin extends Component {
 		return true
 	}
 
-	handleSubmit = async (e) => {
-		const data = await fetch('http://localhost:4000/logIn', {
+	handleLogin = async (e) => {
+		const data = await fetch('http://localhost:4000/login', {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({
+           password: this.state.inputPassword,
+           fname: this.state.fname,
+           lname: this.state.lname,
+         })
+     })
+     const response = await data.json();
+     console.log(response)
+     return response;
+	}
+
+	handleRegister = async (e) => {
+		const data = await fetch('http://localhost:4000/register', {
        method: "POST",
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify({
@@ -53,8 +69,8 @@ class PicLogin extends Component {
 
 	onClickPixels = (e) => {
 		console.log(e.target.name)
-		const pixelInput = this.state.inputPassword
-		pixelInput.push(e.target.name)
+		let pixelInput = this.state.inputPassword
+		pixelInput += (e.target.name)
 		document.getElementById(e.target.name).className += " clicked";
 		this.setState({
 			inputPassword: pixelInput
@@ -63,14 +79,22 @@ class PicLogin extends Component {
 
 	resetPad = () => {
 		let list = ["soccer", "basketball", "volleyball", "desert", "winter", "forest", "gummies", "chocolate", "worms"]
-		this.setState({inputPassword: []})
-		list.forEach(x => document.getElementById(x).className = "pixels")
+		this.setState({inputPassword: "",
+						fname: '',
+						lname: ''
+					})
+		list.forEach(pixel => document.getElementById(pixel).className = "pixels")
 	}
 
+	switchForm = (e) => {
+		this.setState({view: e.target.name})
+	}
 render (props) {
 	console.log(this.state)
 		return (
 			<div>
+			<button onClick={this.switchForm} className = "btn" name = "login"> Log In </button>
+			<button onClick={this.switchForm} className = "btn"name = "register"> Register </button><br/>
 				<input onChange={this.onChange} id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
 				<input onChange={this.onChange} id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
 				<br />
@@ -85,7 +109,10 @@ render (props) {
 					<img src = {chocolate} alt = "chocolate" onClick = {this.onClickPixels} className = "pixels" name = "chocolate" id = "chocolate"/>
 					<img src = {worms} alt = "worms" onClick = {this.onClickPixels} className = "pixels" name = "worms" id = "worms"/>
 				</div>
-				<button onClick={this.handleSubmit} className = "btn"> Submit </button>
+				{this.state.view === 'login'
+					? <button onClick={this.handleLogin} className = "btn"> Log In </button>
+					: <button onClick={this.handleRegister} className = "btn"> Register </button>
+				}
 				<button onClick={this.resetPad} className = "btn"> Reset </button>
 			</div>
 			)

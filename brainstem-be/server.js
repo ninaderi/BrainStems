@@ -27,13 +27,12 @@ var knex = require('knex')({
 
 knex.schema.createTable('student', (table) => {
 	table.increments('id').primary();
-	table.specificType('stringarray', 'text ARRAY');
+	table.specificType('password', 'integer ARRAY');
 	table.string('fname');
 	table.string('lname');
-	table.string('title');
 	table.string('wvUId');
 	table.timestamps();
-	table.unique('wvID');
+	table.unique('wvUId');
   }).then(function () {
 	console.log('Student Table is Created!');
   }).catch(err => console.log(err));
@@ -79,7 +78,7 @@ knex.schema.createTable('student', (table) => {
   }).catch(err => console.log(err));
 
 
-  //****************************** SAMPLE INSERT STRING******************************************8
+  //****************************** SAMPLE KNEX *********************************************8
 //   knex('movies').insert({title: 'Slaughterhouse Fiveness'}).then(data => console.log(data))
 
 //   knex.select().table('movies')
@@ -93,73 +92,35 @@ app.get('/', (req, res) => {
 
 app.post('/logIn', (req, res) => {
 	const {fname, lname, password} = req.body;
-	// if (this.state.fname != this.state.dbResponse.fname || this.state.lname != this.state.dbResponse.lname){
-	// 		console.log("first loop")
-	// 		this.setState({
-	// 			logIn: false,
-	// 			inputPassword: [],
-	// 			fname: "",
-	// 			lname: "",
-	// 		})
-	// 		return "Invalid credentials"
-	// 	} else if(this.checkPassword(this.state.inputPassword, this.state.dbResponse.password) === false){
-	// 		console.log("2nd loop", this.state.inputPassword, this.state.dbResponse.password)
-	// 		this.setState({
-	// 			logIn: false,
-	// 			inputPassword: [],
-	// 			fname: "",
-	// 			lname: "",
-	// 		})
-	// 		return "Invalid password"
-	// 	} else{
-	// 		console.log("3rd loop")
-	// 		this.setState({
-	// 			logIn: true,
-	// 			inputPassword: [],
-	// 			fname: "",
-	// 			lname: "",
-	// 		})
-	// 		return "You are in!"
-	// 	}
+	let subquery = knex('student').where({fname: fname, lname: lname}).then(data => {
+		if (data.length === 0) {
+			res.send({"response": "user does not exists"})
+		}else {
+			if(data[0].password === password) {
+				res.send({"response": "Loggged In"})
 
-	console.log("Connecting!", req.body)
-	res.send({"reponse": "finish log in"})
+		}else {
+			res.send({"response": "invalid Password"})
 
+		}
+	}
 })
+});
+
 
 app.post('/register', (req, res) => {
+	
 	const {fname, lname, password} = req.body;
-	// if (this.state.fname != this.state.dbResponse.fname || this.state.lname != this.state.dbResponse.lname){
-	// 		console.log("first loop")
-	// 		this.setState({
-	// 			logIn: false,
-	// 			inputPassword: [],
-	// 			fname: "",
-	// 			lname: "",
-	// 		})
-	// 		return "Invalid credentials"
-	// 	} else if(this.checkPassword(this.state.inputPassword, this.state.dbResponse.password) === false){
-	// 		console.log("2nd loop", this.state.inputPassword, this.state.dbResponse.password)
-	// 		this.setState({
-	// 			logIn: false,
-	// 			inputPassword: [],
-	// 			fname: "",
-	// 			lname: "",
-	// 		})
-	// 		return "Invalid password"
-	// 	} else{
-	// 		console.log("3rd loop")
-	// 		this.setState({
-	// 			logIn: true,
-	// 			inputPassword: [],
-	// 			fname: "",
-	// 			lname: "",
-	// 		})
-	// 		return "You are in!"
-	// 	}
-
-	console.log("Connecting!", req.body)
-	res.send({"reponse": "finish register"})
+	
+	let subquery = knex('student').where({fname: fname, lname: lname}).then(data => {
+	if (data.length === 0) {
+		knex('student').insert({fname: fname, lname: lname, password: password}).then(data => console.log("User Added"))
+		res.send({"response": "user registered"})
+	}else {
+		console.log("user exists")
+		res.send({"response": "user exists"})
+	}
+});
 
 })
 
