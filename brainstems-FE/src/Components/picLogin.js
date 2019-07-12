@@ -16,7 +16,7 @@ class PicLogin extends Component {
 		this.state = {
 		inputPassword: "",
 		logIn: false,
-		view: 'login' 
+		buttonView: 'login' 
 		}
 
 	}
@@ -87,14 +87,14 @@ class PicLogin extends Component {
 	}
 
 	switchForm = (e) => {
-		this.setState({view: e.target.name})
+		this.setState({buttonView: e.target.name})
 	}
 render (props) {
 	console.log(this.state)
 		return (
 			<div>
 			<button onClick={this.switchForm} className = "btn" name = "login"> Log In </button>
-			<button onClick={this.switchForm} className = "btn"name = "register"> Register </button><br/>
+			<button onClick={this.switchForm} className = "btn" name = "register"> Register </button><br/>
 				<input onChange={this.onChange} id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
 				<input onChange={this.onChange} id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
 				<br />
@@ -109,7 +109,7 @@ render (props) {
 					<img src = {chocolate} alt = "chocolate" onClick = {this.onClickPixels} className = "pixels" name = "chocolate" id = "chocolate"/>
 					<img src = {worms} alt = "worms" onClick = {this.onClickPixels} className = "pixels" name = "worms" id = "worms"/>
 				</div>
-				{this.state.view === 'login'
+				{this.state.buttonView === 'login'
 					? <button onClick={this.handleLogin} className = "btn"> Log In </button>
 					: <button onClick={this.handleRegister} className = "btn"> Register </button>
 				}
