@@ -12,13 +12,13 @@ div {
   min-height: 100vmin;
   text-align: center;
   border: 1px solid black;
-  background-color: yellow;
+  background-color: white;
 }
 
 #container { 
   display: grid;
   grid-template-columns: 25% 1fr;
-  grid-template-rows: 17vmin 1fr;
+  grid-template-rows: 15vmin 1fr;
   grid-template-areas: 
     "header header"
     "menu activities";
@@ -36,10 +36,11 @@ header {
 #navBar {
   grid-area: menu;
   min-height: 100vmin;
-  background-color: orange;
+  background-color: white;
 }
 
 #navBar > ul {
+  
   margin: 0;
   list-style-type: none;
   padding: 0;
@@ -47,19 +48,33 @@ header {
 }
 
 #navBar > ul > li {
+  
   min-height: 10vmin;
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: #f7901e;
 }
 
 #navBar > ul > li > a {
   text-decoration: none;
+  font-weight: bold;
+  font-size: 23px;
+  font-family: "chevin pro", sans-serif;
+
 }
+.menuitem:hover {
+  color: white;
+  transform: scale(1.1, 1.1);
+}
+
 
 #bodyContainer {
   grid-area: activities;
   background-color: green;
+}
+
+#wvimg {
+  max-width: auto;
 }
