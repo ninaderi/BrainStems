@@ -1,33 +1,65 @@
+body,
+html,
+div {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .App {
+  min-height: 100vmin;
   text-align: center;
+  border: 1px solid black;
+  background-color: yellow;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+#container { 
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: 17vmin 1fr;
+  grid-template-areas: 
+    "header header"
+    "menu activities";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+    grid-area: header;
+    float: left;
+    min-height: 20vmin;
+    border: 1px solid black;
+    min-width: 20vmin;
+    text-align: left;
+}
+
+#navBar {
+  grid-area: menu;
+  min-height: 100vmin;
+  background-color: orange;
+}
+
+#navBar > ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  background-color: blue;
+}
+
+#navBar > ul > li {
+  min-height: 10vmin;
+  border-bottom: 1px solid black;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: red;
 }
 
-.App-link {
-  color: #61dafb;
+#navBar > ul > li > a {
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#bodyContainer {
+  grid-area: activities;
+  background-color: green;
 }
