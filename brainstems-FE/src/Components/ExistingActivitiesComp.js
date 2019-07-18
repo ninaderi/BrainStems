@@ -5,7 +5,7 @@ class ExistingActivitiesComp extends React.Component {
         console.log('from exist')
         return(
             <div>
-                <h1>hi from ExistingActivitiesComp</h1>
+                <h1>Existing Activities</h1>
             </div>
         )
     }

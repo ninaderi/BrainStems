@@ -54,14 +54,14 @@ NAV SECTION
   
   margin: 0;
   list-style-type: none;
-  padding: 0;
-  background-color: blue;
+  padding: 1px;
+  background-color: #551A8B;
 }
 
 #navBar > ul > li {
   
   min-height: 10vmin;
-  border-bottom: 1px solid black;
+  border: 1px solid #551A8B;
   display: flex;
   align-items: center;
   justify-content: center;

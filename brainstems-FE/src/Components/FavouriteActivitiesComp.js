@@ -5,7 +5,7 @@ class FavouriteActivitiesComp extends React.Component {
         console.log('from exist')
         return(
             <div>
-                <h1>hi from FavouriteActivitiesComp</h1>
+                <h1>Favourite Activities</h1>
             </div>
         )
     }
