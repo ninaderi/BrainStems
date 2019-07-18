@@ -12,7 +12,7 @@ div {
   min-height: 100vmin;
   text-align: center;
   border: 1px solid black;
-  background-color: yellow;
+  background-color: white;
 }
 
 /****************************
@@ -46,11 +46,12 @@ NAV SECTION
 #navBar {
   grid-area: menu;
   max-height: 50vmin;
-  background-color: orange;
+  background-color: white;
 }
 
 
 #navBar > ul {
+  
   margin: 0;
   list-style-type: none;
   padding: 0;
@@ -58,26 +59,31 @@ NAV SECTION
 }
 
 #navBar > ul > li {
+  
   min-height: 10vmin;
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: #f7901e;
 }
 
 #navBar > ul > li > a {
   text-decoration: none;
-}
+  font-weight: bold;
+  font-size: 23px;
+  font-family: "chevin pro", sans-serif;
 
-a:hover{
+}
+.menuitem:hover {
   color: white;
-  font-size: 18px;
+  transform: scale(1.1, 1.1);
 }
 
 /*********************
 ****ACTIVITY BODY*****
 *********************/
+
 #bodyContainer {
   grid-area: activities;
   background-color: green;
@@ -95,4 +101,7 @@ RESPONSIVE SECTION
     grid-column: 1 / span 2;
     grid-row: 3;
   }
+
+#wvimg {
+  max-width: auto;
 }
