@@ -1,4 +1,5 @@
 import React from 'react'
+import ActivitiesCard from "./ActivitiesCard"
 
 class ExistingActivitiesComp extends React.Component {
     render() {
@@ -6,6 +7,13 @@ class ExistingActivitiesComp extends React.Component {
         return(
             <div>
                 <h1>hi from ExistingActivitiesComp</h1>
+                <ActivitiesCard />
+                <ActivitiesCard />
+                <ActivitiesCard />
+                <ActivitiesCard />
+                <ActivitiesCard />
+                <ActivitiesCard />
+                <ActivitiesCard />
             </div>
         )
     }
