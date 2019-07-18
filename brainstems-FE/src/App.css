@@ -12,18 +12,25 @@ div {
   min-height: 100vmin;
   text-align: center;
   border: 1px solid black;
-  background-color: yellow;
+  background-color: white;
 }
 
+/****************************
+SURROUNDING PAGE CONTAINER
+*****************************/
 #container { 
   display: grid;
   grid-template-columns: 25% 1fr;
-  grid-template-rows: 17vmin 1fr;
+  grid-template-rows: 15vmin 1fr 1fr;
   grid-template-areas: 
     "header header"
-    "menu activities";
+    "menu activities"
+    ". activities";
 }
 
+/****************
+WONDERVILLE HEADER
+*****************/
 header {
     grid-area: header;
     float: left;
@@ -33,33 +40,69 @@ header {
     text-align: left;
 }
 
+/**********
+NAV SECTION
+***********/
 #navBar {
   grid-area: menu;
-  min-height: 100vmin;
-  background-color: orange;
+  max-height: 50vmin;
+  background-color: white;
 }
 
+
 #navBar > ul {
+  
   margin: 0;
   list-style-type: none;
-  padding: 0;
-  background-color: blue;
+  padding: 1px;
+  background-color: #551A8B;
 }
 
 #navBar > ul > li {
+  
   min-height: 10vmin;
-  border-bottom: 1px solid black;
+  border: 1px solid #551A8B;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: #f7901e;
 }
 
 #navBar > ul > li > a {
   text-decoration: none;
+  font-weight: bold;
+  font-size: 23px;
+  font-family: "chevin pro", sans-serif;
+
 }
+.menuitem:hover {
+  color: white;
+  transform: scale(1.1, 1.1);
+}
+
+/*********************
+****ACTIVITY BODY*****
+*********************/
 
 #bodyContainer {
   grid-area: activities;
   background-color: green;
+  min-height: 120vmin;
+}
+
+/******************
+RESPONSIVE SECTION
+******************/
+@media only screen and (max-width: 800px) {
+  #navBar {
+    grid-column: 1/span2;
+  }
+  #bodyContainer {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+  }
+}
+
+#wvimg {
+  max-width: auto;
 }

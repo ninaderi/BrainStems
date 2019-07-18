@@ -4,7 +4,7 @@ class CompletedActivitiesComp extends React.Component {
     render() {
         return(
             <div>
-                <h1>CompletedActivitiesComp</h1>
+                <h1>Completed Activities</h1>
             </div>
         )
     }
