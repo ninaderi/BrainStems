@@ -21,7 +21,7 @@ SURROUNDING PAGE CONTAINER
 #container { 
   display: grid;
   grid-template-columns: 25% 1fr;
-  grid-template-rows: 17vmin 1fr 1fr;
+  grid-template-rows: minmax(100px, auto) minmax(14px, auto) 1fr;
   grid-template-areas: 
     "header header"
     "menu activities"
@@ -33,9 +33,6 @@ WONDERVILLE HEADER
 *****************/
 header {
     grid-area: header;
-    float: left;
-    min-height: 20vmin;
-    border: 1px solid black;
     min-width: 20vmin;
     text-align: left;
 }
@@ -45,13 +42,11 @@ NAV SECTION
 ***********/
 #navBar {
   grid-area: menu;
-  max-height: 50vmin;
   background-color: white;
 }
 
 
 #navBar > ul {
-  
   margin: 0;
   list-style-type: none;
   padding: 0;
@@ -59,13 +54,12 @@ NAV SECTION
 }
 
 #navBar > ul > li {
-  
-  min-height: 10vmin;
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f7901e;
+  height: 10vmin;
 }
 
 #navBar > ul > li > a {
@@ -75,6 +69,7 @@ NAV SECTION
   font-family: "chevin pro", sans-serif;
 
 }
+
 .menuitem:hover {
   color: white;
   transform: scale(1.1, 1.1);
@@ -87,20 +82,29 @@ NAV SECTION
 #bodyContainer {
   grid-area: activities;
   background-color: green;
-  min-height: 120vmin;
 }
 
 /******************
 RESPONSIVE SECTION
 ******************/
 @media only screen and (max-width: 800px) {
+  #container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas:
+      "header"
+      "menu"
+      "activities"
+  }
   #navBar {
     grid-column: 1/span2;
+    grid-row: 2;
   }
   #bodyContainer {
     grid-column: 1 / span 2;
     grid-row: 3;
   }
+}
 
 #wvimg {
   max-width: auto;
