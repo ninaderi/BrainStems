@@ -21,7 +21,7 @@ SURROUNDING PAGE CONTAINER
 #container { 
   display: grid;
   grid-template-columns: 25% 1fr;
-  grid-template-rows: 17vmin 1fr 1fr;
+  grid-template-rows: 15vmin 1fr 1fr;
   grid-template-areas: 
     "header header"
     "menu activities"
@@ -101,6 +101,7 @@ RESPONSIVE SECTION
     grid-column: 1 / span 2;
     grid-row: 3;
   }
+}
 
 #wvimg {
   max-width: auto;
