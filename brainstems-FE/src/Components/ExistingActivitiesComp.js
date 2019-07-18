@@ -6,14 +6,17 @@ class ExistingActivitiesComp extends React.Component {
         console.log('from exist')
         return(
             <div>
-                <h1>Existing Activities Comp</h1>
-                <ActivitiesCard />
-                <ActivitiesCard />
-                <ActivitiesCard />
-                <ActivitiesCard />
-                <ActivitiesCard />
-                <ActivitiesCard />
-                <ActivitiesCard />
+                <h1 id="activityAreaHeader" >Existing Activities</h1>
+            
+                <div id="activityArea">
+                    <ActivitiesCard />
+                    <ActivitiesCard />
+                    <ActivitiesCard />
+                    <ActivitiesCard />
+                    <ActivitiesCard />
+                    <ActivitiesCard />
+                    <ActivitiesCard />
+                </div>
             </div>
         )
     }
