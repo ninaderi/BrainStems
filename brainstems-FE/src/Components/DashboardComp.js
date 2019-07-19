@@ -1,6 +1,6 @@
 import React from 'react'
 //import picLogin from './picLogin'
-import AddActivityComp from './AddActivityComp'
+import ActivityComp from './ActivityComp'
 import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
 import FavouriteActivitiesComp from './FavouriteActivitiesComp'
@@ -52,7 +52,7 @@ class DashboardComp extends React.Component {
                     <div id='bodyContainer'>
                     <Switch>
                         {/* <Route path='/studentlogin' component={picLogin} /> */}
-                        <Route path='/addactivity' component={AddActivityComp} />
+                        <Route path='/addactivity' component={ActivityComp} />
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/favouriteactivities' component={FavouriteActivitiesComp} />
