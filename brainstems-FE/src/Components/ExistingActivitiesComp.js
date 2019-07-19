@@ -5,10 +5,10 @@ class ExistingActivitiesComp extends React.Component {
     render() {
         console.log('from exist')
         return(
-            <div>
+            <div id="activityArea">
                 <h1 id="activityAreaHeader" >Existing Activities</h1>
             
-                <div id="activityArea">
+                <div id="activityAreaCards">
                     <ActivitiesCard />
                     <ActivitiesCard />
                     <ActivitiesCard />

@@ -1,9 +1,9 @@
 body, html, div {
   padding: 0;
   margin: 0;
-  /* height: 100vmin;
-  width: 100%; */
-  overflow: hidden;
+  /* height: 100vh; */
+  width: auto;
+  /* overflow: hidden; */
 }
 
 .App {
@@ -104,9 +104,13 @@ NAV SECTION
 
 #bodyContainer {
   grid-area: activities;
+  display: flex;
   background-color: green;
-  min-height: 100vmin;
+  /* min-height: 100vmin; */
   max-height: 100vh;
+}
+#activityArea {
+  height: auto;
 }
 
 #activityAreaHeader {
@@ -130,7 +134,7 @@ RESPONSIVE SECTION
 ACTIVITY AREA SECTIONS
 **********************/
 
-#activityArea {
+#activityAreaCards {
   overflow: scroll;
   height: 100vh;
   
