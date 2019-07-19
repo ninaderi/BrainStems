@@ -8,7 +8,7 @@ render() {
 
     return (
         <div className = "activityDiv">
-            <img src = {vol} alt = "Picture of Activity" />
+            <img id="activityImage" src = {vol} alt = "Picture of Activity" />
             <div className = "textField">
                 <table>
                     <tbody>
