@@ -5,6 +5,7 @@ import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
 import FavouriteActivitiesComp from './FavouriteActivitiesComp'
 import wonderville from "../images/wonderville.png";
+import mindfuel_logo from "../images/mindfuel_logo.png";
 import { NavLink, Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 
@@ -31,9 +32,14 @@ class DashboardComp extends React.Component {
         return (
             <Router>
                 <div id='container'>
-                    <header>
+                    <header id="wv_header">
                       <img id="wvimg" src={wonderville} alt="wonderville" height="100px" />
-                    </header>                    
+                    </header>
+
+                    <header id="mf_header">
+                        <img id="mindfuel_logo" src={mindfuel_logo} alt="mindfuel_logo" height="80px" />
+                    </header>  
+
                     <div id='navBar'>
                         {/* <NavLink to='/studentlogin'>Student Login</NavLink> */}
                         <ul>

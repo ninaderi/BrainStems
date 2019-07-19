@@ -1,0 +1,27 @@
+.activityDiv {
+    background-color:  white;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+#activityImage {
+    width: 20%;
+    border: 1px black solid;
+    margin: 20px;
+}
+
+table {
+    height: 100%;
+}
+
+.activityCode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+};
+
+.button {
+    max-width: 100px;
+}
