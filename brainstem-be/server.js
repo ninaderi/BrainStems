@@ -4,7 +4,7 @@
 
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db.sqlite');
-var cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const express = require('express');
 
@@ -124,5 +124,7 @@ app.post('/register', (req, res) => {
 
 })
 
-app.listen(4000);
- 
+const PORT = 4000;
+app.listen(PORT, function () {
+	console.log(`server ready and listening on ${PORT}`);
+});
