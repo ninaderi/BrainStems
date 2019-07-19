@@ -11,30 +11,32 @@ render() {
             <img src = {vol} alt = "Picture of Activity" />
             <div className = "textField">
                 <table>
-                    <tr>
-                        <th>Date Class Created</th>
-                        <td>Props for Date Class Created</td>
-                    </tr>   
-                    <tr>
-                        <th>Expiry Date</th>
-                        <td>Props for Class Expiry Date</td>
-                    </tr> 
-                    <tr>
-                        <th>Classroom Name</th>
-                        <td>Props for Classroom Name</td>
-                    </tr> 
-                    <tr>
-                        <th>Grade</th>
-                        <td>Props for Grade</td>
-                    </tr> 
-                    <tr>
-                        <th>Other Info</th>
-                        <td>Props for Other Info</td>
-                    </tr> 
-                    <tr>
-                        <th>Assigned Activities</th>
-                        <td>Props for Assigned Activities</td>
-                    </tr>  
+                    <tbody>
+                        <tr>
+                            <th>Date Class Created</th>
+                            <td>Props for Date Class Created</td>
+                        </tr>
+                        <tr>
+                            <th>Expiry Date</th>
+                            <td>Props for Class Expiry Date</td>
+                        </tr>
+                        <tr>
+                            <th>Classroom Name</th>
+                            <td>Props for Classroom Name</td>
+                        </tr>
+                        <tr>
+                            <th>Grade</th>
+                            <td>Props for Grade</td>
+                        </tr>
+                        <tr>
+                            <th>Other Info</th>
+                            <td>Props for Other Info</td>
+                        </tr>
+                        <tr>
+                            <th>Assigned Activities</th>
+                            <td>Props for Assigned Activities</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div className = "activityCode">
