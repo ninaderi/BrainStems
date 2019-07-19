@@ -1,0 +1,81 @@
+/* @font-face {
+  font-family: "Calibre";
+  font-style: normal;
+  font-weight: normal;
+} */
+
+/* h1 {
+  font-family: "Calibre";
+  font-weight: 200;
+  color: #033819;
+} */
+
+/* #container { 
+  
+  display: grid;
+  grid-template-rows: minmax(100px, auto) minmax(14px, auto) 1fr;
+  grid-template-columns: 25% 1fr 1fr;
+  
+  grid-template-areas: 
+    "wv_header wv_header mf_header"
+    "menu activities activities"
+    ". activities activities";
+} */
+
+.tc {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* grid-template-columns: 25% 1fr 1fr 1fr;                 
+  /*auto auto auto auto;*/
+  /* grid-template-rows: 30% auto;
+  grid-template-areas: 
+    "filterbox filterbox filterbox filterbox"
+    "activities activities activities activities" */
+
+}
+.filterComps{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.activityCardComp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.activities {
+  grid-area: activities;
+}
+
+.heading {
+  font-size: 200%;
+}
+
+.filterbox {
+  color: white;
+  width: auto;
+  height: 20%;
+  text-align: left;
+  padding: 5px;
+  align-content: left;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 1px solid #000000;
+  display: inline-block;
+}
+
+.filtertitles {
+  color: purple;
+}
+
+.search {
+  border-color: transparent;
+}
+input::placeholder {
+  color: green;
+  font-size: 0.8em;
+  text-align: center;
+}
