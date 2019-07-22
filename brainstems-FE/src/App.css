@@ -1,16 +1,10 @@
 body, html, div {
   padding: 0;
   margin: 0;
-  /* height: 100vh; */
   width: auto;
-  /* overflow: hidden; */
 }
 
 .App {
-  /* min-height: 100%; */
-  /* text-align: center; */
-  /* border: 1px solid black; */
-  background-color: white;
 }
 
 /****************************
@@ -19,7 +13,7 @@ SURROUNDING PAGE CONTAINER
 #container { 
   
   display: grid;
-  grid-template-rows: minmax(100px, auto) minmax(14px, auto) 1fr;
+  grid-template-rows: minmax(25px, auto) minmax(14px, auto) 1fr;
   grid-template-columns: 25% 1fr 1fr;
   
   grid-template-areas: 
@@ -35,9 +29,7 @@ WONDERVILLE HEADER
 #wv_header {
     grid-area: wv_header;
     padding: 10px;
-    min-height: 20vmin;
-    /* border: 1px solid black; */
-
+    min-height: 15vmin;
     min-width: 20vmin;
     text-align: left;
 }
@@ -47,10 +39,8 @@ WONDERVILLE HEADER
   padding: 10px;
   float: right;
   min-height: 20vmin;
-  /* border: 1px solid black; */
   min-width: 20vmin;
   text-align: right;
-  /* align-content: right; */
 }
 
 #wvimg {
@@ -66,39 +56,54 @@ NAV SECTION
 ***********/
 #navBar {
   grid-area: menu;
-  background-color: white;
+  margin-top: 20px;
 }
 
 
 #navBar > ul {
   margin: 0;
   list-style-type: none;
-  padding: 1px;
-  background-color: #551A8B;
+  padding: 0px;
+  font-size: 0;
 }
 
 #navBar > ul > li {
+  margin: 5px;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   min-height: 10vmin;
-  border: 1px solid #551A8B;
-  background-color: #f7901e;
-  height: 10vmin;
+  border: 5px solid #f7901e;
+  border-radius: 5px;
+  box-shadow: -4px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 #navBar > ul > li > a {
+  margin: 0;
+  padding: 10px 20px;
   text-decoration: none;
   font-weight: bold;
   font-size: 23px;
   font-family: "chevin pro", sans-serif;
-
 }
 
 .menuitem:hover {
   color: white;
   transform: scale(1.1, 1.1);
+}
+
+#navBar > ul > li:hover {
+  background-color: #532380;
+}
+
+#navBar > ul > li:hover a{
+  color: white;
+}
+
+#navBar > ul > li:active {
+  transform: translateX(-2px) translateY(2px);
+  box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.75);
 }
 
 /*********************
@@ -108,8 +113,6 @@ NAV SECTION
 #bodyContainer {
   grid-area: activities;
   display: flex;
-  background-color: green;
-  /* min-height: 100vmin; */
   max-height: 100vh;
 }
 
@@ -117,7 +120,15 @@ NAV SECTION
   height: auto;
 }
 
+#activityArea hr {
+  border: 0;
+  margin: 0;
+  height: 0px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
 #activityAreaHeader {
+  margin: 0;
   padding: 10px;
 }
 /******************
@@ -126,18 +137,30 @@ RESPONSIVE SECTION
 @media only screen and (max-width: 800px) {
   #container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
     grid-template-areas:
       "header"
+      "header2"
       "menu"
       "activities"
   }
+
+  #wv_header {
+    grid-area: header;
+    grid-row: 1;
+  }
+
+  #mf_header {
+    /* grid-area: header2;
+    grid-column: 1; */
+    display: none;
+  }
   #navBar {
-    grid-column: 1/span2;
+    grid-area: menu;
     grid-row: 2;
   }
   #bodyContainer {
-    grid-column: 1 / span 2;
+    grid-area: activities;
     grid-row: 3;
   }
 }

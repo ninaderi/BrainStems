@@ -1,5 +1,6 @@
 .activityDiv {
     background-color:  white;
+    border-bottom: 3px solid #532380;
     height: 30%;
     display: flex;
     flex-direction: row;
@@ -14,9 +15,14 @@
 
 table {
     height: 100%;
+    border-spacing: 10px 0px;
 }
 
+tr:nth-child(even) {background: #CCC;}
+tr:nth-child(odd) {background: #FFF;}
+
 .activityCode {
+    margin-left: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,3 +31,6 @@ table {
 .button {
     max-width: 100px;
 }
+
+
+

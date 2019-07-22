@@ -7,7 +7,7 @@ class ExistingActivitiesComp extends React.Component {
         return(
             <div id="activityArea">
                 <h1 id="activityAreaHeader" >Existing Activities</h1>
-            
+                <hr/>
                 <div id="activityAreaCards">
                     <ActivitiesCard />
                     <ActivitiesCard />
