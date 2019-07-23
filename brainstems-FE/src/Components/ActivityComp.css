@@ -59,7 +59,7 @@
 }
 
 .filterbox {
-  color: white;
+  color: green;
   width: 25%;
   text-align: left;
   padding: 2px;
@@ -77,7 +77,7 @@
 }
 
 .search {
-  border-color: transparent;
+  border-color: black;
 }
 input::placeholder {
   color: green;
