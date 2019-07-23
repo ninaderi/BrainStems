@@ -1,25 +1,25 @@
 import React, { Component } from "react";
+import { Activities } from "./Activities";
 
 class FilterTopic extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isChecked: false
     };
   }
 
-  handleInputChange = e => {
-    const target = e.target;
-    const mark = target.type === "checkbox" ? target.checked : target.value;
-    const other = target.other;
-    console.log(target);
-    console.log(mark);
-    console.log(other);
-    this.setState({
-      [other]: mark
-    });
+  onCheckChange = e => {
+    let target = e.target;
+    let isChecked = target.type === "checkbox" ? target.checked : target.value;
+    let other = target.other;
+    console.log("im the whole target in filtertopic", e.target);
+    console.log("im the true/false in filtertopic", isChecked);
+    console.log("im just the topic", target.value);
+    if (isChecked === true) {
+      this.props.onCheckFilter(target.value);
+    }
   };
-
   render() {
     return (
       <div className="filterbox">
@@ -29,8 +29,8 @@ class FilterTopic extends Component {
         <input
           id="idtech"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Technology and Innovation"
         />
         Technology and Innovation
@@ -38,8 +38,8 @@ class FilterTopic extends Component {
         <input
           id="idearth"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Earth and Science"
         />
         Earth and Science
@@ -47,8 +47,8 @@ class FilterTopic extends Component {
         <input
           id="idscience"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Science"
         />
         Science
@@ -56,8 +56,8 @@ class FilterTopic extends Component {
         <input
           id="idphys"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Physical Science"
         />
         Physical Science
@@ -65,8 +65,8 @@ class FilterTopic extends Component {
         <input
           id="idstem"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="STEM Careers"
         />
         STEM Careers
