@@ -51,7 +51,9 @@ class ActivityComp extends Component {
 
   onCheckFilter = arg => {
     const { activities } = this.state;
+    console.log("activities before filtering ", { activities })
     let filteredActivities = activities.filter(activity => {
+      console.log("activity is", activity, "arg is ", arg);
       return activity.grade === Number(arg);
     });
 

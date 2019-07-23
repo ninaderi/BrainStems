@@ -21,6 +21,8 @@ SURROUNDING PAGE CONTAINER
     "wv_header wv_header mf_header"
     "menu activities activities"
     ". activities activities";
+  
+  padding: 5px;
 }
 
 /****************
@@ -30,8 +32,8 @@ WONDERVILLE HEADER
 #wv_header {
     grid-area: wv_header;
     padding: 10px;
-    min-height: 15vmin;
-    min-width: 20vmin;
+    min-height: 10vh;
+    min-width: 20vw;
     text-align: left;
 }
 
@@ -39,8 +41,8 @@ WONDERVILLE HEADER
   grid-area: mf_header;
   padding: 10px;
   float: right;
-  min-height: 20vmin;
-  min-width: 20vmin;
+  min-height: 10vh;
+  min-width: 20vw;
   text-align: right;
 }
 
@@ -57,7 +59,7 @@ NAV SECTION
 ***********/
 #navBar {
   grid-area: menu;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 
@@ -69,7 +71,7 @@ NAV SECTION
 }
 
 #navBar > ul > li {
-  margin: 5px;
+  margin: 0px 5px 5px 5px;
   display: flex;
   text-align: center;
   align-items: center;
@@ -152,8 +154,8 @@ RESPONSIVE SECTION
   }
 
   #mf_header {
-    /* grid-area: header2;
-    grid-column: 1; */
+    grid-area: header2;
+    /* grid-column: 1; */
     display: none;
   }
   #navBar {
