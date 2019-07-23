@@ -1,26 +1,25 @@
 import React, { Component } from "react";
+import { Activities } from "./Activities";
 
 class FilterType extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isChecked: false
     };
   }
 
-
-  handleInputChange = e => {
-    const target = e.target;
-    const mark = target.type === "checkbox" ? target.checked : target.value;
-    const other = target.other;
-    console.log("how can i possibly be a target in filtertype", target);
-    console.log("what is a mark in filtertype", mark);
-
-    this.setState({
-      [other]: mark
-    });
+  onCheckChange = e => {
+    let target = e.target;
+    let isChecked = target.type === "checkbox" ? target.checked : target.value;
+    let other = target.other;
+    console.log("im the whole target in filtertype", e.target);
+    console.log("im the true/false in filtertype", isChecked);
+    console.log("im just the type", target.value);
+    if (isChecked === true) {
+      this.props.onCheckFilter(target.value);
+    }
   };
-
   render() {
     return (
       <div className="filterbox">
@@ -30,8 +29,8 @@ class FilterType extends Component {
         <input
           id="idexperiment"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Experiment"
         />
         Experiment
@@ -39,8 +38,8 @@ class FilterType extends Component {
         <input
           id="idgame"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Game"
         />
         Game
@@ -48,8 +47,8 @@ class FilterType extends Component {
         <input
           id="idlesson"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Lesson"
         />
         Lesson
@@ -57,8 +56,8 @@ class FilterType extends Component {
         <input
           id="idquiz"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Quiz"
         />
         Quiz
@@ -66,8 +65,8 @@ class FilterType extends Component {
         <input
           id="idstory"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Story"
         />
         Story
@@ -75,8 +74,8 @@ class FilterType extends Component {
         <input
           id="idvideo"
           type="checkbox"
-          onChange={this.handleInputChange}
-          onChecked={this.props.filterChange}
+          onChange={this.onCheckChange}
+          onChecked={this.onCheckFilter}
           value="Video"
         />
         Video

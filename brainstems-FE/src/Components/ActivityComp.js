@@ -10,27 +10,31 @@ import SearchBox from "./SearchBox";
 
 import "./ActivityComp.css";
 
-class App extends Component {
+class ActivityComp extends Component {
   constructor() {
     super();
     this.state = {
       activities: [],
-      searchfield: "",
-      filterChange: "",
+      // filteredTopicTypeGrade: [], //maybenot
+      searchfield: ""
+      // pointer: "",
       //-------------not sure if these will be required
-      topic: [
-        "Technology and Innovation",
-        "Earth and Science",
-        "Science",
-        "Physical Science",
-        "STEM Careers"
-      ],
-      topicfilter: "",
-      timefilter: "",
-      grade: ["K", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-      gradefilter: "",
-      type: ["Experiment", "Game", "Lesson", "Quiz", "Story", "Video"],
-      typefilter: ""
+      //----------------just saying this area might have to go
+      // topic: [
+      //   "Technology and Innovation",
+      //   "Earth and Science",
+      //   "Science",
+      //   "Physical Science",
+      //   "STEM Careers"
+      // ],
+      // topicfilter: "",
+      // timefilter: "",
+      // grade: ["K", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      // gradefilter: "",
+      // type: ["Experiment", "Game", "Lesson", "Quiz", "Story", "Video"],
+      // typefilter: ""
+      //-------------not sure if these will be required
+      //----------------just saying this area might have to go
     };
   }
 
@@ -40,48 +44,62 @@ class App extends Component {
 
   onSearchChange = e => {
     this.setState({ searchfield: e.target.value });
-    console.log(e.target.value);
+    console.log("this is the onsearchchange function", e.target.value);
   };
 
-  onFilterChange = e => {
-    this.setState({ filterChange: e.target.value });
-    console.log("im a filter target", e.target.value);
-    //when topic is pushed a list shows up and you are able to click on item
-    //should these filters work independently???? or just within their category
-    //for all types called checkbox the filter should be called
-    //perhaps make a temporary array so push the types/grades/topics
+  //does the parent need to know about onCheckChange
+
+  onCheckFilter = arg => {
+    const { activities } = this.state;
+    let filteredActivities = activities.filter(activity => {
+      return activity.grade === Number(arg);
+    });
+
+    console.log("compare*********", activities, filteredActivities);
+    // if (checked is true) limit ativities with just that
+
+    this.setState({ activities: filteredActivities });
+    console.log("onCheckFilter", arg);
+    //if type checkbox is true then filter on those
   };
 
   render() {
-    const { activities, searchfield, filterChange } = this.state; //added new filter
-    const filteredActivities = activities.filter(activity => {
-      return (
-        activity.name.toLowerCase().includes(searchfield.toLowerCase()) ||
-        activity.name.toLowerCase().includes(filterChange.toLowerCase())
-        //we have something here for filterChange but yet it should include filtered change
-      );
+    let { activities, searchfield } = this.state;
+    let filteredActivities = activities.filter(activity => {
+      return activity.name.toLowerCase().includes(searchfield.toLowerCase());
     });
 
     return !activities.length ? (
       <h1>Loading ...</h1>
     ) : (
       <div className="tc">
-        <div className="filterComps"> 
-          <SearchBox className= "filterbox" searchChange={this.onSearchChange} />
-          <FilterTopic className="filterbox" filterChange={this.onFilterChange} />
-          <FilterType className="filterbox" filterChange={this.onFilterChange} />
-          <FilterGrade className="filterbox" filterChange={this.onFilterChange} />
+        <div className="filterComps">
+          {/* this is the search input by keyword */}
+          <SearchBox className="filterbox" searchChange={this.onSearchChange} />
+          {/* this is the search input end */}
+
+          <FilterTopic
+            className="filterbox"
+            onCheckFilter={this.onCheckFilter}
+          />
+          <FilterType
+            className="filterbox"
+            onCheckFilter={this.onCheckFilter}
+          />
+          <FilterGrade
+            className="filterbox"
+            onCheckFilter={this.onCheckFilter}
+          />
         </div>
-       <br/>
-       <div className="activityCardComp">
-         <Scroll>
+        <br />
+        <div className="activityCardComp">
+          <Scroll>
             <CardList activities={filteredActivities} />;
           </Scroll>
-      </div>
-          
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default ActivityComp;

@@ -5,16 +5,16 @@ const Scroll = props => {
     "props first",
     props,
     // "props children",
-    // props.children,
-    "what is this"
+    props.children,
+    "im in the scroll perhaps looking for filtered activities???"
   );
 
   return (
     <div
       style={{
-        overflowY: "scroll",
-        border: "5px solid black",
-        height: "800px"
+        overflowY: "scroll"
+        // border: "5px solid black"
+        // height: "800px"
       }}
     >
       {props.children}
