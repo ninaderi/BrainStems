@@ -32,9 +32,9 @@ WONDERVILLE HEADER
 #wv_header {
     grid-area: wv_header;
     padding: 10px;
-    min-height: 10vh;
-    min-width: 20vw;
-    text-align: left;
+    /* min-height: 10vh; */
+    /* min-width: 20vw; */
+    /* text-align: left; */
 }
 
 #mf_header {
@@ -47,11 +47,23 @@ WONDERVILLE HEADER
 }
 
 #wvimg {
-  max-width: auto;
+  /* max-width: auto; */
 }
 
 #mindfuel_logo {
   align-content: right;
+}
+
+#studentBtn {
+  background: #f7901e;
+}
+
+#studentBtn:active {
+  background: red;
+}
+
+#studentBtn:focus {
+  background: red;
 }
 
 /**********
@@ -77,9 +89,9 @@ NAV SECTION
   align-items: center;
   justify-content: center;
   min-height: 10vmin;
-  border: 5px solid #f7901e;
-  border-radius: 5px;
-  box-shadow: -4px 5px 5px 0px rgba(0,0,0,0.75);
+  /* border: 5px solid #f7901e; */
+  /* border-radius: 5px; */
+  /* box-shadow: -4px 5px 5px 0px rgba(0,0,0,0.75); */
 }
 
 #navBar > ul > li > a {
@@ -93,7 +105,7 @@ NAV SECTION
 
 .menuitem:hover {
   color: white;
-  transform: scale(1.1, 1.1);
+  /* transform: scale(1.1, 1.1); */
 }
 
 #navBar > ul > li:hover {
@@ -105,8 +117,15 @@ NAV SECTION
 }
 
 #navBar > ul > li:active {
-  transform: translateX(-2px) translateY(2px);
-  box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.75);
+  /* transform: translateX(-2px) translateY(2px);
+  box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.75); */
+  background-color: #532380;
+  /* border: 5px solid #f71eda; */
+}
+
+#navBar > ul > li:focus {
+  background-color: #532380;
+  /* border: 5px solid #f71eda; */
 }
 
 /*********************
