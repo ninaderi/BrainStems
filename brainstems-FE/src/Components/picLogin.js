@@ -14,9 +14,9 @@ class PicLogin extends Component {
 	constructor(props) {
 		super(props) 
 		this.state = {
-		inputPassword: "",
-		logIn: false,
-		buttonView: 'login' 
+			inputPassword: "",
+			logIn: false,
+			buttonView: 'login' 
 		}
 
 	}
@@ -72,6 +72,7 @@ class PicLogin extends Component {
 		let pixelInput = this.state.inputPassword
 		pixelInput += (e.target.name)
 		document.getElementById(e.target.name).className += " clicked";
+		console.log("classname is ",document.getElementById(e.target.name).className )
 		this.setState({
 			inputPassword: pixelInput
 		})
@@ -89,17 +90,18 @@ class PicLogin extends Component {
 	switchForm = (e) => {
 		this.setState({buttonView: e.target.name})
 	}
+	
 render (props) {
 	console.log(this.state)
 		return (
 			<div>
 			<button onClick={this.switchForm} className = "btn" name = "login"> Log In </button>
 			<button onClick={this.switchForm} className = "btn" name = "register"> Register </button><br/>
-				<input onChange={this.onChange} id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
-				<input onChange={this.onChange} id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
+				<input onChange={this.onChange} className="nameInput" id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
+				<input onChange={this.onChange} className="nameInput" id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
 				<br />
 				<div className = "picContainer">
-					<img src = {soccer} alt = "soccer ball" onClick={this.onClickPixels} className = "pixels" name = "soccer" id = "soccer" />
+					<img src = {soccer} alt = "soccer" onClick={this.onClickPixels} className = "pixels" name = "soccer" id = "soccer" />
 					<img src = {basketball} alt = "basketball" onClick={this.onClickPixels} className = "pixels" name = "basketball" id = "basketball"/>
 					<img src = {volleyball} alt = "volleyball"onClick={this.onClickPixels} className = "pixels" name = "volleyball" id = "volleyball"/>
 					<img src = {desert} alt = "desert" onClick = {this.onClickPixels} className = "pixels" name = "desert" id = "desert"/>

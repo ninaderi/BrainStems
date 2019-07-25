@@ -54,7 +54,7 @@ class ActivityComp extends Component {
     console.log("activities before filtering ", { activities })
     let filteredActivities = activities.filter(activity => {
       console.log("activity is", activity, "arg is ", arg);
-      return activity.grade === Number(arg);
+      return activity.type === arg;
     });
 
     console.log("compare*********", activities, filteredActivities);

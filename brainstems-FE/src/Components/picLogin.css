@@ -7,30 +7,33 @@
 	margin: 40px;
 }
 
-.pixels{
+.pixels {
 
 	width: 16vh;
 	height: 16vh;
 	opacity: 1;
 	background-color: black;
 	padding: 2px;
+	transition: all .2s ease-in-out;
 }
 
-.pixels:hover{
+.pixels:hover {
 	opacity: 0.6;
 }
-body{
-	justify-content: center;
-	/* display: flex; */
-}
 
+/* body {
+	justify-content: center; 
+	display: flex; 
+} */
+
+/* 
 img {
 	width: 16vh;
 	height: 16vh;
 	transition: all .2s ease-in-out;
-}
+} */
 
-input {
+.nameInput {
 	padding: 5px;
 	margin: 5px;
 }
@@ -39,7 +42,7 @@ input {
 	opacity: 0.2;
 }
 
-button {
+.btn {
 	color: white;
 	width: 10vh;
 	height: 5vh;
@@ -50,6 +53,6 @@ button {
 	transition: all .2s ease-in-out;
 }
 
-button:hover {
+.btn:hover {
 	transform: scale(1.1);
 }

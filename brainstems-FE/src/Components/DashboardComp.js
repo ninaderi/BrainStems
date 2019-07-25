@@ -1,5 +1,5 @@
 import React from 'react'
-//import picLogin from './picLogin'
+import picLogin from './picLogin'
 import ActivityComp from './ActivityComp'
 import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
@@ -13,8 +13,19 @@ import { NavLink, Switch, Route, Link, BrowserRouter as Router } from 'react-rou
 class DashboardComp extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            activePage: ""
+        };
     };
+
+    onClickStudentLogin = (e) => {
+        console.log('click')
+        window.open('/studentlogin');
+    };
+
+    onClickNavBtn = (e) => {
+        this.setState({activePage:e.target.id});
+    }
 
     // onOver = (e) => {
     //     e.target.style.font_color = 'red';
@@ -28,22 +39,24 @@ class DashboardComp extends React.Component {
         
     // };
 
+
     render() {
         return (
             <Router>
                 <div id='container'>
                     <header id="wv_header">
-                      <img id="wvimg" src={wonderville} alt="wonderville" height="100px" />
+                      <img id="wvimg" src={wonderville} alt="wonder" height="115" />
                     </header>
 
                     <header id="mf_header">
+                        {/* <NavLink id="studentLoginBtn" to='/studentlogin' onClick={this.onClickStudentLogin}>Student Login</NavLink> */}
+                        <button id="studentBtn" >Student</button>
                         <img id="mindfuel_logo" src={mindfuel_logo} alt="mindfuel_logo" height="80px" />
                     </header>  
 
                     <div id='navBar'>
-                        {/* <NavLink to='/studentlogin'>Student Login</NavLink> */}
                         <ul>
-                            <li><NavLink className="menuitem" to='/addactivity'>ADD NEW ACTIVITY</NavLink></li>
+                            <li><NavLink id="addActivityBtn" onClick={this.onClickNavBtn} className="menuitem" to='/addactivity'>ADD NEW ACTIVITY</NavLink></li>
                             <li><NavLink className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
                             <li><NavLink className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
                             <li><NavLink className="menuitem" to='/favouriteactivities'>FAVOURITE ACTIVITIES</NavLink></li>
@@ -51,11 +64,12 @@ class DashboardComp extends React.Component {
                     </div>
                     <div id='bodyContainer'>
                     <Switch>
-                        {/* <Route path='/studentlogin' component={picLogin} /> */}
+                        
                         <Route path='/addactivity' component={ActivityComp} />
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/favouriteactivities' component={FavouriteActivitiesComp} />
+                        <Route path='/studentlogin' component={picLogin} />
 
                     </Switch>
                     </div>

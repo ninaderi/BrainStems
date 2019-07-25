@@ -9,7 +9,6 @@ import DashboardComp from './Components/DashboardComp'
 function App() {
   return (
     <div className="App">
-       {/* <PicLogin /> */}
        <DashboardComp />
     </div>
   );
