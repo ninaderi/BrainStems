@@ -5,6 +5,7 @@ import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
 import FavouriteActivitiesComp from './FavouriteActivitiesComp'
 import wonderville from "../images/wonderville.png";
+import addComp from "./AddActivityComp"
 import mindfuel_logo from "../images/mindfuel_logo.png";
 import { NavLink, Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
@@ -70,6 +71,7 @@ class DashboardComp extends React.Component {
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/favouriteactivities' component={FavouriteActivitiesComp} />
                         <Route path='/studentlogin' component={picLogin} />
+                        <Route path='/addComp' component={addComp} />
 
                     </Switch>
                     </div>

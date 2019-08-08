@@ -57,7 +57,7 @@ export const Activities = [
     time: 4.42,
     grade: 6,
     type: "Video",
-    img: "TBD"
+    img: "https://www.harvesttotable.com/wp-content/uploads/2013/05/Redworms.jpg"
   },
 
   {
