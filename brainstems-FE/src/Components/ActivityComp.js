@@ -17,7 +17,7 @@ class ActivityComp extends Component {
       activities: [],
       // filteredTopicTypeGrade: [], //maybenot
       searchfield: "",
-      resetFilterType: ""
+      typeSearchfield: ""
       // pointer: "",
       //-------------not sure if these will be required
       //----------------just saying this area might have to go
@@ -45,33 +45,45 @@ class ActivityComp extends Component {
 
   onSearchChange = e => {
     this.setState({ searchfield: e.target.value });
-    console.log("this is the onsearchchange function", e.target.value);
+    console.log("****************this is the onsearchchange function", e.target.value);
   };
 
   //does the parent need to know about onCheckChange
 
-  onCheckFilterType = arg => {
+  onCheckFilterType = array => {
     const { activities } = this.state;
-    console.log("activities before filtering ", { activities })
-    let filteredActivities = activities.filter(activity => {
-      console.log("activity is", activity, "arg is ", arg);
-      return activity.type === arg;
-    });
+    console.log("array is  ", array)
+    let filteredActivities;
+    if (array.length > 0) {
+      filteredActivities = activities.filter(activity => {
+        if (array.includes(activity.type)) {
+          return activity;
+        }
+      });
+    } else {
+        filteredActivities = activities;
+    }
+      console.log("filter activities now ", filteredActivities)
+      return filteredActivities;
+    };
 
-    console.log("compare*********", activities, filteredActivities);
-    // if (checked is true) limit ativities with just that
+    // totalFilteredActivites = 
+    
 
-    this.setState({ activities: filteredActivities });
-    console.log("onCheckFilter", arg);
+   // this.setState({ activities: filteredActivities });
+    // console.log("***************onCheckFilter", array);
     //if type checkbox is true then filter on those
-  };
+  
 
   render() {
-    let { activities, searchfield } = this.state;
+    let { activities, searchfield, typeSearchfield} = this.state;
     let filteredActivities = activities.filter(activity => {
       return activity.name.toLowerCase().includes(searchfield.toLowerCase());
+      
     });
-console.log("this is filtered activities", filteredActivities)
+    console.log("current act", filteredActivities)
+    
+
     return !activities.length ? (
       <h1>Loading ...</h1>
     ) : (
