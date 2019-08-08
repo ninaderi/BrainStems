@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CardList from "./CardList";
 import FilterGrade from "./FilterGrade";
 import FilterTopic from "./FilterTopic";
-import FilterType from "./FilterType";
+import FilterTypeComp from "./FilterTypeComp";
 import Scroll from "./Scroll";
 import { Activities } from "./Activities";
 import SearchBox from "./SearchBox";
@@ -16,7 +16,8 @@ class ActivityComp extends Component {
     this.state = {
       activities: [],
       // filteredTopicTypeGrade: [], //maybenot
-      searchfield: ""
+      searchfield: "",
+      resetFilterType: ""
       // pointer: "",
       //-------------not sure if these will be required
       //----------------just saying this area might have to go
@@ -49,7 +50,7 @@ class ActivityComp extends Component {
 
   //does the parent need to know about onCheckChange
 
-  onCheckFilter = arg => {
+  onCheckFilterType = arg => {
     const { activities } = this.state;
     console.log("activities before filtering ", { activities })
     let filteredActivities = activities.filter(activity => {
@@ -70,7 +71,7 @@ class ActivityComp extends Component {
     let filteredActivities = activities.filter(activity => {
       return activity.name.toLowerCase().includes(searchfield.toLowerCase());
     });
-
+console.log("this is filtered activities", filteredActivities)
     return !activities.length ? (
       <h1>Loading ...</h1>
     ) : (
@@ -84,9 +85,9 @@ class ActivityComp extends Component {
             className="filterbox"
             onCheckFilter={this.onCheckFilter}
           />
-          <FilterType
+          <FilterTypeComp
             className="filterbox"
-            onCheckFilter={this.onCheckFilter}
+            onCheckFilterType={this.onCheckFilterType}
           />
           <FilterGrade
             className="filterbox"
@@ -96,7 +97,7 @@ class ActivityComp extends Component {
         <br />
         <div className="activityCardComp">
           <Scroll>
-            <CardList activities={filteredActivities} />;
+            <CardList activities={filteredActivities} />
           </Scroll>
         </div>
       </div>

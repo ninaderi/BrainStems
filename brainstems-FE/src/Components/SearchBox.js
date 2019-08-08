@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBox = ({ searchfield, searchChange }) => {
+const SearchBox = ({ searchChange }) => {
   return (
     <div className="filterbox">
       <div className="filtertitles">
