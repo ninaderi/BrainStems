@@ -20,7 +20,7 @@ class DashboardComp extends React.Component {
 
     onClickStudentLogin = (e) => {
         console.log('click')
-        window.open('/studentlogin');
+        // window.open('/studentlogin'); don't need this
     };
 
     onClickNavBtn = (e) => {
@@ -49,8 +49,8 @@ class DashboardComp extends React.Component {
                     </header>
 
                     <header id="mf_header">
-                        {/* <NavLink id="studentLoginBtn" to='/studentlogin' onClick={this.onClickStudentLogin}>Student Login</NavLink> */}
-                        <button id="studentBtn" >Student</button>
+                        <NavLink id="studentLoginBtn2" to='/studentlogin' onClick={this.onClickStudentLogin}>Student Login</NavLink>
+                        
                         <img id="mindfuel_logo" src={mindfuel_logo} alt="mindfuel_logo" height="80px" />
                     </header>  
 
