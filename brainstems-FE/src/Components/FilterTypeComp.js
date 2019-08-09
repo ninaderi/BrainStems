@@ -28,8 +28,6 @@ class FilterTypeComp extends Component {
     console.log("im the true/false in filtertype", isChecked);
     console.log("im just the type", target.value);
 
-
-
     if (isChecked === true) {
       this.combineTypeArray(target.value);
       // console.log("array is ", this.array)
@@ -37,9 +35,8 @@ class FilterTypeComp extends Component {
       this.popTypeArray(target.value)
       // console.log("array is now", this.array)
     }
-       this.props.onCheckFilterType(this.array);
-    
-    //isChecked === false
+    this.props.onCheckFilterType(this.array);
+  
   };
   render() {
     return (
