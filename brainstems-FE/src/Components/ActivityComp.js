@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CardList from "./CardList";
-import FilterGrade from "./FilterGrade";
+import FilterGradeComp from "./FilterGradeComp";
 import FilterTopic from "./FilterTopic";
 import FilterTypeComp from "./FilterTypeComp";
 import Scroll from "./Scroll";
@@ -71,8 +71,11 @@ class ActivityComp extends Component {
     const { activities } = this.state;
 
     let filteredActivities;
+    console.log("array lebgth ", array.length);
     if (array.length > 0) {
+      
       filteredActivities = activities.filter(activity => {
+        console.log("array is ", array, "and activity grade is ", activity.grade);
         if (array.includes(activity.grade)) {
           return activity;
         } else {

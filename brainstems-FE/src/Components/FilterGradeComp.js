@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Activities } from "./Activities";
+// import { Activities } from "./Activities";
 
 class FilterGradeComp extends Component {
   constructor(props) {
     super(props);
+    this.array = [];
     this.state = {
       isChecked: false
     };
@@ -19,18 +20,17 @@ class FilterGradeComp extends Component {
   //--------------------this identifies whether item is checked as true/false
   onCheckChange = e => {
     let target = e.target;
-    let isChecked = target.grade === "checkbox" ? target.checked : target.value;
-    let other = target.other;
-    //console.log("im the whole target in filtergrade", e.target);
-    console.log("im the true/false in filtertype", isChecked);
+    let isChecked = target.type === "checkbox" ? target.checked : target.value;
+    console.log("im the whole target in filtergrade", e.target);
+    // console.log("im the true/false in filtertype", isChecked);
     console.log("im just the grade", target.value);
 
     if (isChecked === true) {
       this.combineGradeArray(target.value);
-      // console.log("array is ", this.array)
+      console.log("array is ", this.array)
     } else {
       this.popGradeArray(target.value);
-      // console.log("array is now", this.array)
+      console.log("array is now", this.array)
     }
     this.props.onCheckFilterGrade(this.array);
   };
@@ -46,7 +46,7 @@ class FilterGradeComp extends Component {
           type="checkbox"
           onChange={this.onCheckChange} //identifies true/false
           //onChecked={this.onCheckFilter} //filters on this item
-          value={0}
+          value = {0}
         />
         Kindergarten
         <br />

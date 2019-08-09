@@ -5,7 +5,7 @@ export const Activities = [
     topic: ["Technology and Innovation"],
     keyword: ["Chemistry", "Temperature"],
     time: 1.42,
-    grade: 1,
+    grade: "1",
     type: "Experiment",
     img: "TBD"
   },
@@ -15,7 +15,7 @@ export const Activities = [
     topic: ["Science"],
     keyword: ["Light", "pH", "Density"],
     time: 2.42,
-    grade: 2,
+    grade: "2",
     type: "Game",
     img: "TBD"
   },
@@ -25,7 +25,7 @@ export const Activities = [
     topic: ["Physical Science"],
     keyword: ["Flow", "Design", "Float"],
     time: 9.52,
-    grade: 3,
+    grade: "3",
     type: "Lesson",
     img: "TBD"
   },
@@ -35,7 +35,7 @@ export const Activities = [
     topic: ["STEM Careers"],
     keyword: ["Weight", "Matter", "Radiation"],
     time: 3.42,
-    grade: 4,
+    grade: "4",
     type: "Quiz",
     img: "TBD"
   },
@@ -45,7 +45,7 @@ export const Activities = [
     topic: ["Earth and Science"],
     keyword: ["Ear", "Sound", "Fermentation"],
     time: 2.42,
-    grade: 5,
+    grade: "5",
     type: "Story",
     img: "TBD"
   },
@@ -55,7 +55,7 @@ export const Activities = [
     topic: ["Physical Science"],
     keyword: ["Solution", "Dissolve"],
     time: 4.42,
-    grade: 6,
+    grade: "6",
     type: "Video",
     img: "https://www.harvesttotable.com/wp-content/uploads/2013/05/Redworms.jpg"
   },
@@ -66,7 +66,7 @@ export const Activities = [
     topic: ["Technology and Innovation"],
     keyword: ["Chemistry", "Temperature"],
     time: 1.42,
-    grade: 7,
+    grade: "7",
     type: "Experiment",
     img: "TBD"
   },
@@ -76,7 +76,7 @@ export const Activities = [
     topic: ["Science"],
     keyword: ["Light", "pH", "Density"],
     time: 2.42,
-    grade: 8,
+    grade: "8",
     type: "Game",
     img: "TBD"
   },
@@ -86,7 +86,7 @@ export const Activities = [
     topic: ["Physical Science"],
     keyword: ["Flow", "Design", "Float"],
     time: 9.52,
-    grade: 9,
+    grade: "9",
     type: "Lesson",
     img: "TBD"
   },
@@ -96,7 +96,7 @@ export const Activities = [
     topic: ["STEM Careers"],
     keyword: ["Weight", "Matter", "Radiation"],
     time: 3.42,
-    grade: 10,
+    grade: "10",
     type: "Quiz",
     img: "TBD"
   },
@@ -106,7 +106,7 @@ export const Activities = [
     topic: ["Earth and Science"],
     keyword: ["Ear", "Sound", "Fermentation"],
     time: 2.42,
-    grade: 11,
+    grade: "11",
     type: "Story",
     img: "TBD"
   },
@@ -116,7 +116,7 @@ export const Activities = [
     topic: ["Physical Science"],
     keyword: ["Solution", "Dissolve"],
     time: 4.42,
-    grade: 12,
+    grade: "12",
     type: "Video",
     img: "TBD"
   }
