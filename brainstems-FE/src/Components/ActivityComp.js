@@ -47,7 +47,6 @@ class ActivityComp extends Component {
 
   onCheckFilterType = array => {
     const { activities } = this.state;
-    // console.log("array is  ", array)
 
     let filteredActivities;
     if (array.length > 0) {
@@ -64,6 +63,28 @@ class ActivityComp extends Component {
 
     console.log("filter type array is ", filteredActivities)
     this.filterByTypeArray = filteredActivities;
+    this.combineAllFilters();
+
+  };
+
+  onCheckFilterGrade = array => {
+    const { activities } = this.state;
+
+    let filteredActivities;
+    if (array.length > 0) {
+      filteredActivities = activities.filter(activity => {
+        if (array.includes(activity.grade)) {
+          return activity;
+        } else {
+          return "";
+        }
+      });
+    } else {
+        filteredActivities = activities;
+    }
+
+    console.log("filter grade array is ", filteredActivities)
+    this.filterByGradeArray = filteredActivities;
     this.combineAllFilters();
 
   };
@@ -110,9 +131,9 @@ class ActivityComp extends Component {
             className="filterbox"
             onCheckFilterType={this.onCheckFilterType}
           />
-          <FilterGrade
+          <FilterGradeComp
             className="filterbox"
-            onCheckFilter={this.onCheckFilter}
+            onCheckFilterGrade={this.onCheckFilterGrade}
           />
         </div>
         <br />
