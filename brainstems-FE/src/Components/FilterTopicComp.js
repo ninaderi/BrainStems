@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Activities } from "./Activities";
 
 class FilterTopicComp extends Component {
   constructor(props) {
@@ -20,11 +19,10 @@ class FilterTopicComp extends Component {
 
   onCheckChange = e => {
     let target = e.target;
-    let isChecked = target.topic === "checkbox" ? target.checked : target.value;
-    let other = target.other;
-    //console.log("im the whole target in filtertopic", e.target);
-    console.log("im the true/false in filtertopic", isChecked);
-    console.log("im just the topic", target.value);
+    let isChecked = target.type === "checkbox" ? target.checked : target.value;
+    console.log("im the whole target in filtertopic", e.target);
+    // console.log("im the true/false in filtertopic", isChecked);
+    // console.log("im just the topic", target.value);
 
     if (isChecked === true) {
       this.combineTopicArray(target.value);

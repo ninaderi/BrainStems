@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CardList from "./CardList";
 import FilterGradeComp from "./FilterGradeComp";
-import FilterTopic from "./FilterTopic";
+import FilterTopicComp from "./FilterTopicComp";
 import FilterTypeComp from "./FilterTypeComp";
 import Scroll from "./Scroll";
 import { Activities } from "./Activities";
@@ -92,6 +92,32 @@ class ActivityComp extends Component {
 
   };
 
+  onCheckFilterTopic = array => {
+    const { activities } = this.state;
+    console.log("array is ", array.length);
+    let filteredActivities;
+
+    if (array.length > 0) {
+      filteredActivities = activities.filter(activity => {
+        console.log("array is ", array, "and activity topic is ", activity.topic);
+        if (array.includes(activity.topic[0])) {  // hack to get only first element from activity.topic to test equivalence
+          console.log("topic matches");
+          return activity;
+        } else {
+          console.log("no matches");
+          return "";
+        }
+      });
+    } else {
+        filteredActivities = activities;
+    }
+
+    console.log("final filter topic array is ", filteredActivities)
+    this.filterByTopicArray = filteredActivities;
+    this.combineAllFilters();
+
+  };
+
   combineAllFilters = () => {
     // find all common activities and push resultant to state
     let arrays = [this.filterByTypeArray, this.filterByGradeArray, 
@@ -126,9 +152,9 @@ class ActivityComp extends Component {
           <SearchBox className="filterbox" searchChange={this.onSearchChange} />
           {/* this is the search input end */}
 
-          <FilterTopic
+          <FilterTopicComp
             className="filterbox"
-            onCheckFilter={this.onCheckFilter}
+            onCheckFilterTopic={this.onCheckFilterTopic}
           />
           <FilterTypeComp
             className="filterbox"
