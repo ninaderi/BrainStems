@@ -6,88 +6,82 @@ import FilterTypeComp from "./FilterTypeComp";
 import Scroll from "./Scroll";
 import { Activities } from "./Activities";
 import SearchBox from "./SearchBox";
-//import Popper.js???sc
-
 import "./ActivityComp.css";
 
 class ActivityComp extends Component {
   constructor() {
     super();
-    this.filterByTypeArray = Activities;
-
+    this.filterByTypeArray = Activities; 
+    this.filterByGradeArray = Activities; 
+    this.filterByTopicArray = Activities;
+    this.filterBySearchArray = Activities;
+    
     this.state = {
-      activities: [],
-      totalFilteredActivities: [],
+      activities: Activities,
+      totalFilteredActivities: Activities,
+      // searchfield: "",
       // filteredTopicTypeGrade: [], //maybenot
-      searchfield: "",
-      typeSearchfield: ""
-      // pointer: "",
-      //-------------not sure if these will be required
-      //----------------just saying this area might have to go
-      // topic: [
-      //   "Technology and Innovation",
-      //   "Earth and Science",
-      //   "Science",
-      //   "Physical Science",
-      //   "STEM Careers"
-      // ],
-      // topicfilter: "",
-      // timefilter: "",
-      // grade: ["K", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-      // gradefilter: "",
-      // type: ["Experiment", "Game", "Lesson", "Quiz", "Story", "Video"],
-      // typefilter: ""
-      //-------------not sure if these will be required
-      //----------------just saying this area might have to go
+      // typeSearchfield: ""
     };
   }
 
-  componentDidMount() {
-    this.setState({ activities: Activities });
-    
-  }
+  // ********  not sure we need this method as these are set in constructor - GREG ******
+  // componentDidMount() {  
+  //   this.setState({ 
+  //     activities: Activities,
+  //     totalFilteredActivities: Activities
+  //   });
+  // }
+  // *********
 
   onSearchChange = e => {
-    this.setState({ searchfield: e.target.value });
+    let { activities } = this.state;
+    this.filterBySearchArray = activities.filter(activity => {
+      return activity.name.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    this.combineAllFilters();
+    console.log("search filter is ", this.filterBySearchArray);
+    // this.setState({ searchfield: e.target.value });
     // console.log("****************this is the onsearchchange function", e.target.value);
   };
 
-  //does the parent need to know about onCheckChange
-
   onCheckFilterType = array => {
     const { activities } = this.state;
-    console.log("array is  ", array)
+    // console.log("array is  ", array)
 
     let filteredActivities;
     if (array.length > 0) {
       filteredActivities = activities.filter(activity => {
         if (array.includes(activity.type)) {
           return activity;
+        } else {
+          return "";
         }
       });
     } else {
         filteredActivities = activities;
     }
-    console.log("filter activities now ", filteredActivities)
+
+    console.log("filter type array is ", filteredActivities)
     this.filterByTypeArray = filteredActivities;
-    this.combineAllFilters(this.filterByTypeArray, Activities, Activities, Activities);
+    this.combineAllFilters();
 
   };
 
-  combineAllFilters = (typeArray, gradeArray, searchArray, topicArray) => {
+  combineAllFilters = () => {
     // find all common activities and push resultant to state
-    let arrays = [typeArray, gradeArray, searchArray, topicArray];
+    let arrays = [this.filterByTypeArray, this.filterByGradeArray, 
+      this.filterByTopicArray, this.filterBySearchArray];
+    console.log(`combined array length is ${arrays.length}`);
+    console.log("combined arrays are ", arrays, "and first array is ", arrays[0]);
 
-    let result = arrays.shift().reduce((res, v) => {
-      
-      if (res.indexOf(v) === -1 && arrays.every((a) => { 
-        return a.indexOf(v) !== -1;
-      }));
-      console.log("push res and v are", res, v);
-      res.push(v);
-      return res;
-    }, []);
-    console.log("resultant array is ", result);
+    let result = arrays.shift().filter(function(v) {
+      return arrays.every(function(a) {
+          return a.indexOf(v) !== -1;
+      });
+    });
+
+    console.log("final array is ", result);
     this.setState({totalFilteredActivities: result});
   }
     
@@ -97,18 +91,9 @@ class ActivityComp extends Component {
     //if type checkbox is true then filter on those
   
 
-  render() {
-    
-    
-    let { activities, searchfield, typeSearchfield } = this.state;
-    let filteredActivities = activities.filter(activity => {
-      return activity.name.toLowerCase().includes(searchfield.toLowerCase());
-      
-    });
-    // console.log("current act", filteredActivities)
-    
+  render() {    
 
-    return !activities.length ? (
+    return !this.state.totalFilteredActivities.length ? (
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
@@ -133,7 +118,7 @@ class ActivityComp extends Component {
         <br />
         <div className="activityCardComp">
           <Scroll>
-            <CardList activities={filteredActivities} />
+            <CardList activities={this.state.totalFilteredActivities} />
           </Scroll>
         </div>
       </div>
