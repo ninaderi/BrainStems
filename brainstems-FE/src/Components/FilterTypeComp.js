@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Activities } from "./Activities";
+// import { Activities } from "./Activities";
 
 class FilterTypeComp extends Component {
   constructor(props) {
@@ -23,10 +23,10 @@ class FilterTypeComp extends Component {
   onCheckChange = e => {
     let target = e.target;
     let isChecked = target.type === "checkbox" ? target.checked : target.value;
-    let other = target.other;
+    // let other = target.other;
     //console.log("im the whole target in filtertype", e.target);
-    console.log("im the true/false in filtertype", isChecked);
-    console.log("im just the type", target.value);
+    // console.log("im the true/false in filtertype", isChecked);
+    // console.log("im just the type", target.value);
 
     if (isChecked === true) {
       this.combineTypeArray(target.value);

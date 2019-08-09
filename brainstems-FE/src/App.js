@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-//import PicLogin from "./Components/picLogin";
-import logo from './images/wonderville.png'
 import DashboardComp from './Components/DashboardComp'
 
 
