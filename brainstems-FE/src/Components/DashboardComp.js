@@ -3,13 +3,10 @@ import picLogin from './picLogin'
 import ActivityComp from './ActivityComp'
 import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
-import FavouriteActivitiesComp from './FavouriteActivitiesComp'
 import wonderville from "../images/wonderville.png";
 import addComp from "./AddActivityComp"
 import mindfuel_logo from "../images/mindfuel_logo.png";
 import { NavLink, Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
-
-
 
 class DashboardComp extends React.Component {
     constructor() {
@@ -60,7 +57,6 @@ class DashboardComp extends React.Component {
                             <li><NavLink id="addActivityBtn" onClick={this.onClickNavBtn} className="menuitem" to='/addactivity'>ADD NEW ACTIVITY</NavLink></li>
                             <li><NavLink className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
                             <li><NavLink className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
-                            <li><NavLink className="menuitem" to='/favouriteactivities'>FAVOURITE ACTIVITIES</NavLink></li>
                         </ul>
                     </div>
                     <div id='bodyContainer'>
@@ -69,7 +65,6 @@ class DashboardComp extends React.Component {
                         <Route path='/addactivity' component={ActivityComp} />
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
-                        <Route path='/favouriteactivities' component={FavouriteActivitiesComp} />
                         <Route path='/studentlogin' component={picLogin} />
                         <Route path='/addComp' component={addComp} />
 
