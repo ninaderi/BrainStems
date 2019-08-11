@@ -10,7 +10,7 @@ const Card = props => {
         <img
           className="cardimage"
           alt="name goes here"
-          src={`https://robohash.org/${props.id}`}
+          src={`${props.img}`}
         />
       </div>
       <div>
