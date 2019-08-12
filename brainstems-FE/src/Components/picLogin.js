@@ -95,8 +95,6 @@ render (props) {
 	console.log(this.state)
 		return (
 			<div>
-			<button onClick={this.switchForm} className = "btn" name = "login"> Log In </button>
-			<button onClick={this.switchForm} className = "btn" name = "register"> Register </button><br/>
 				<input onChange={this.onChange} className="nameInput" id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
 				<input onChange={this.onChange} className="nameInput" id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
 				<br />
@@ -112,10 +110,10 @@ render (props) {
 					<img src = {worms} alt = "worms" onClick = {this.onClickPixels} className = "pixels" name = "worms" id = "worms"/>
 				</div>
 				{this.state.buttonView === 'login'
-					? <button onClick={this.handleLogin} className = "btn"> Log In </button>
-					: <button onClick={this.handleRegister} className = "btn"> Register </button>
+					? <button onClick={this.handleLogin} className = "btn btn-md btn-accent"> Log In </button>
+					: <button onClick={this.handleRegister} className = "btn btn-md btn-default"> Register </button>
 				}
-				<button onClick={this.resetPad} className = "btn"> Reset </button>
+				<button onClick={this.resetPad} className = "btn btn-md btn-accent-outline"> Reset </button>
 			</div>
 			)
 		}
