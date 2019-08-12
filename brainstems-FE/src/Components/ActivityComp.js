@@ -92,27 +92,33 @@ class ActivityComp extends Component {
 
   };
 
-  onCheckFilterTopic = array => {
+  onCheckFilterTopic = filterArray => {
     const { activities } = this.state;
-    console.log("array is ", array.length);
+    console.log("filterArray is ", filterArray.length);
     let filteredActivities;
 
-    if (array.length > 0) {
+    if (filterArray.length > 0) {
       filteredActivities = activities.filter(activity => {
-        console.log("array is ", array, "and activity topic is ", activity.topic);
-        if (array.includes(activity.topic[0])) {  // hack to get only first element from activity.topic to test equivalence
-          console.log("topic matches");
-          return activity;
-        } else {
-          console.log("no matches");
-          return "";
-        }
+        console.log("filterArray is ", filterArray, "and activity topic is ", activity.topic);
+        let i = 0;
+        do {
+          console.log("activity topic iter is ", activity.topic[i])
+          if (filterArray.includes(activity.topic[i])) {  
+            console.log("topic matches");
+            break;
+          } else {
+            console.log("no matches");
+            return "";
+          }
+          i += 1;
+        } while (activity.topic[i]);
+        return activity;
       });
     } else {
         filteredActivities = activities;
     }
 
-    console.log("final filter topic array is ", filteredActivities)
+    console.log("final filter topic filterArray is ", filteredActivities)
     this.filterByTopicArray = filteredActivities;
     this.combineAllFilters();
 
