@@ -54,7 +54,7 @@ class DashboardComp extends React.Component {
 
                     <div id='navBar'>
                         <ul>
-                            <li><NavLink id="addActivityBtn" onClick={this.onClickNavBtn} className="menuitem" to='/addactivity'>ADD NEW ACTIVITY</NavLink></li>
+                            <li><NavLink activeClassName="activeNavLink" id="addActivityBtn" onClick={this.onClickNavBtn} className="menuitem" to='/addactivity'>ADD NEW ACTIVITY</NavLink></li>
                             <li><NavLink className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
                             <li><NavLink className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
                         </ul>
