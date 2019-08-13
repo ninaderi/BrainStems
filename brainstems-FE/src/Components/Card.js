@@ -6,7 +6,7 @@ const Card = props => {
   //console.log(props, "im in card where the activities live");
 
   return (
-    <Link to={`/newactivity/${props.activityId}`}>
+    <Link to={`/addactivity/${props.activityId}`}>
       <div className="card">
         <div>
           <img

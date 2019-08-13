@@ -44,7 +44,7 @@ class DashboardComp extends React.Component {
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/studentlogin' component={picLogin} />
-                        <Route exact path='/newactivity/:activityId' component={AddActivityComp} />
+                        <Route exact path='/addactivity/:activityId' component={AddActivityComp} />
 
                     {/* </Switch> */}
                     </div>
