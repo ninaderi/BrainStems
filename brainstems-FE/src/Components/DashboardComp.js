@@ -1,10 +1,10 @@
 import React from 'react'
 import picLogin from './picLogin'
-import ActivityComp from './ActivityComp'
+import NewActivityComp from './NewActivityComp'
 import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
 import wonderville from "../images/wonderville.png";
-import addComp from "./AddActivityComp"
+import AddActivityComp from "./AddActivityComp"
 import mindfuel_logo from "../images/mindfuel_logo.png";
 import { NavLink, Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
@@ -16,28 +16,6 @@ class DashboardComp extends React.Component {
         };
     };
 
-    onClickStudentLogin = (e) => {
-        console.log('click')
-        // window.open('/studentlogin'); don't need this
-    };
-
-    onClickNavBtn = (e) => {
-        this.setState({activePage:e.target.id});
-    }
-
-    // onOver = (e) => {
-    //     e.target.style.font_color = 'red';
-    //     e.target.style.transform = 'scale(1.3, 1.3)';
-        
-    // };
-
-    // onOut = (e) => {
-    //     // e.target.style.backgroundColor = '';
-    //     e.target.style.transform = 'initial';
-        
-    // };
-
-
     render() {
         return (
             <Router>
@@ -47,26 +25,26 @@ class DashboardComp extends React.Component {
                     </header>
 
                     <header id="mf_header">
-                        <NavLink id="studentLoginBtn2" to='/studentlogin' onClick={this.onClickStudentLogin}>Student Login</NavLink>
+                        <NavLink activeClassName="activeNavLink" id="studentLoginBtn2" to='/studentlogin'>Student Login</NavLink>
                         
                         <img id="mindfuel_logo" src={mindfuel_logo} alt="mindfuel_logo" height="80px" />
                     </header>  
 
                     <div id='navBar'>
                         <ul>
-                            <li><NavLink id="addActivityBtn" onClick={this.onClickNavBtn} className="menuitem" to='/addactivity'>ADD NEW ACTIVITY</NavLink></li>
-                            <li><NavLink className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
-                            <li><NavLink className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
+                            <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/newactivity'>ADD NEW ACTIVITY</NavLink></li>
+                            <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
+                            <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
                         </ul>
                     </div>
                     <div id='bodyContainer'>
                     <Switch>
                         
-                        <Route path='/addactivity' component={ActivityComp} />
+                        <Route path='/newactivity' component={NewActivityComp} />
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/studentlogin' component={picLogin} />
-                        <Route path='/addComp' component={addComp} />
+                        <Route path='/addactivitycomp' component={AddActivityComp} />
 
                     </Switch>
                     </div>

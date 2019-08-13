@@ -4,6 +4,7 @@ import FilterGradeComp from "./FilterGradeComp";
 import FilterTopicComp from "./FilterTopicComp";
 import FilterTypeComp from "./FilterTypeComp";
 import Scroll from "./Scroll";
+import FilterApp from "./FilterApp";
 import { Activities } from "./Activities";
 import SearchBox from "./SearchBox";
 import "./ActivityComp.css";
@@ -154,6 +155,9 @@ class ActivityComp extends Component {
     ) : (
       <div className="tc">
         <div className="filterComps">
+
+          {/* <FilterApp className="filterbox" /> */}
+
           {/* this is the search input by keyword */}
           <SearchBox className="filterbox" searchChange={this.onSearchChange} />
           {/* this is the search input end */}

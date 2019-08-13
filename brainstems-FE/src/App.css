@@ -103,29 +103,18 @@ NAV SECTION
   font-family: "chevin pro", sans-serif;
 }
 
-.menuitem:hover {
-  color: white;
-  /* transform: scale(1.1, 1.1); */
-}
-
-#navBar > ul > li:hover {
-  background-color: #532380;
-}
-
 #navBar > ul > li:hover a{
+  background-color: #532380;
   color: white;
 }
 
-#navBar > ul > li:active {
-  /* transform: translateX(-2px) translateY(2px);
-  box-shadow: -1px 2px 5px 0px rgba(0,0,0,0.75); */
+.activeNavLink {
   background-color: #532380;
-  /* border: 5px solid #f71eda; */
+  color: white;
 }
 
-#navBar > ul > li:focus {
-  background-color: #532380;
-  /* border: 5px solid #f71eda; */
+a:focus {  /* need this to override Navlink std color of blue */
+  color: white;
 }
 
 /*********************
