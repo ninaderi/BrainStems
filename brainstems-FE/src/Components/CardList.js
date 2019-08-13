@@ -8,6 +8,7 @@ const CardList = ({ activities }) => {
         return (
           <Card
             key={i}
+            activityId={activities[i].id}
             name={activities[i].name}
             topic={activities[i].topic}
             keyword={activities[i].keyword}
