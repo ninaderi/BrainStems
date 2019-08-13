@@ -10,7 +10,7 @@ const Scroll = props => {
   // );
 
   return (
-    <div
+    <div className="activityScrollDiv" 
       style={{
         overflowY: "scroll"
         // border: "5px solid black"

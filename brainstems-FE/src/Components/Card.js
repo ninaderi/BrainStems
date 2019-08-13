@@ -14,7 +14,7 @@ const Card = props => {
         />
       </div>
       <div>
-        <h2 className="activitycardname">{name}</h2>
+        <h2 className="activityCardName">{name}</h2>
       </div>
     </div>
   );

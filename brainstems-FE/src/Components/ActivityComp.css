@@ -45,15 +45,6 @@
   min-block-size: 25%; */
 }
 
-.activityCardComp {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.activities {
-  grid-area: activities;
-}
-
 .heading {
   font-size: 200%;
 }
@@ -85,17 +76,40 @@ input::placeholder {
   text-align: center;
 }
 
+.activityCardComp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* .activities {
+  grid-area: activities;
+} */
+
+.activityScrollDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
 .card {
   background-color: orange;
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   border-style: solid;
   padding: 2px;
   margin: 2px;
-  font-size: 8px;
-  width: 150px;
+  /* font-size: 4px; */
+  width: 300px;
   height: 150px;
 }
 .cardimage {
-  width: 80px;
-  height: 80px;
+  width: 130px;
+  height: 130px;
+  padding: 10px;
+}
+
+.activityCardName {
+  font-size: 20px;
+  letter-spacing: normal;
+
 }
