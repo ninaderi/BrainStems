@@ -7,6 +7,7 @@ const db = new sqlite3.Database('./db.sqlite');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const express = require('express');
+const Activities = require('./Activities')
 
 const app = express();
 app.use(cors());
@@ -21,7 +22,7 @@ var knex = require('knex')({
 });
 
 
-
+console.log(Activities)
 
 // *****************************THE TABLES IN KNEX ARE INSTANTIATED BELOW FEEL FREE TO EDIT AND ADD NEW TABLES**************************
 
@@ -88,6 +89,10 @@ knex.schema.createTable('student', (table) => {
 
 app.get('/', (req, res) => {
 	res.send( "Hello World!")
+})
+
+app.get('/newActivity', (req, res) => {
+	res.send(Activities)
 })
 
 app.post('/logIn', (req, res) => {
