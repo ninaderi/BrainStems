@@ -103,6 +103,6 @@ const Activities = [
 ];
 
 module.exports = {
-  Activities:  Activities, 
+  Activities:  Activities
  
 }
