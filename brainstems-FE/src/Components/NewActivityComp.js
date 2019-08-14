@@ -10,8 +10,8 @@ import SearchBox from "./SearchBox";
 import "./ActivityComp.css";
 
 class ActivityComp extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.filterByTypeArray = Activities; 
     this.filterByGradeArray = Activities; 
     this.filterByTopicArray = Activities;
@@ -24,6 +24,7 @@ class ActivityComp extends Component {
       // filteredTopicTypeGrade: [], //maybenot
       // typeSearchfield: ""
     };
+    console.log(this.props)
   }
 
   // ********  not sure we need this method as these are set in constructor - GREG ******
@@ -149,7 +150,7 @@ class ActivityComp extends Component {
   
 
   render() {    
-
+    console.log("the props", this.props)
     return !this.state.totalFilteredActivities.length ? (
       <h1>No Activities Found ...</h1>
     ) : (
