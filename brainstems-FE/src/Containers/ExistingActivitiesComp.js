@@ -1,5 +1,5 @@
 import React from 'react'
-import ActivitiesCard from "./ActivitiesCard"
+import ActivitiesCard from "../Components/ActivitiesCard"
 
 class ExistingActivitiesComp extends React.Component {
     render() {
