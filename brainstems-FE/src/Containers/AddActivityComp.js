@@ -1,6 +1,6 @@
 import React from "react";
-import { Activities } from "./Activities";
-import "./activitiesCard.css";
+import { Activities } from "../Components/Activities";
+import "../styles/activitiesCard.css";
 
 class AddActivityComp extends React.Component {
   render() {

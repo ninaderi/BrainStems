@@ -8,7 +8,7 @@ import chocolate from "../images/chocolate.jpg"
 import forest from "../images/forest.jpg"
 import desert from "../images/desert.jpg"
 import basketball from "../images/basketball.jpg"
-import "./picLogin.css"
+import "../styles/picLogin.css"
 
 class PicLogin extends Component {
 	constructor(props) {

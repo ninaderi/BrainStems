@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import CardList from "./CardList";
-import FilterGradeComp from "./FilterGradeComp";
-import FilterTopicComp from "./FilterTopicComp";
-import FilterTypeComp from "./FilterTypeComp";
-import Scroll from "./Scroll";
-import FilterApp from "./FilterApp";
-import { Activities } from "./Activities";
-import SearchBox from "./SearchBox";
-import "./ActivityComp.css";
+import CardList from "../Components/CardList";
+import FilterGradeComp from "../Components/FilterGradeComp";
+import FilterTopicComp from "../Components/FilterTopicComp";
+import FilterTypeComp from "../Components/FilterTypeComp";
+import Scroll from "../Components/Scroll";
+import FilterApp from "../Components/FilterApp";
+import { Activities } from "../Components/Activities";
+import SearchBox from "../Components/SearchBox";
+import "../styles/ActivityComp.css";
 
 class ActivityComp extends Component {
   constructor(props) {
@@ -28,12 +28,12 @@ class ActivityComp extends Component {
   }
 
   // ********  not sure we need this method as these are set in constructor - GREG ******
-  // componentDidMount() {  
-  //   this.setState({ 
-  //     activities: Activities,
-  //     totalFilteredActivities: Activities
-  //   });
-  // }
+  componentDidMount() {  
+    this.setState({ 
+      activities: Activities,
+      totalFilteredActivities: Activities
+    });
+  }
   // *********
 
   onSearchChange = e => {

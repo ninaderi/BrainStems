@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./activitiesCard.css"
+import "../styles/activitiesCard.css"
 import vol from "../images/vol.jpg"
 
 class ActivitiesCard extends Component {
