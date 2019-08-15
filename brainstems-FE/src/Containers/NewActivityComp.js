@@ -7,24 +7,24 @@ import Scroll from "../Components/Scroll";
 import FilterApp from "../Components/FilterApp";
 import { Activities } from "../Components/Activities";
 import SearchBox from "../Components/SearchBox";
-import "../styles/ActivityComp.css";
+import "../styles/NewActivityComp.css";
 
-class ActivityComp extends Component {
+class NewActivityComp extends Component {
   constructor(props) {
     super(props);
-    this.filterByTypeArray = Activities; 
-    this.filterByGradeArray = Activities; 
-    this.filterByTopicArray = Activities;
-    this.filterBySearchArray = Activities;
-    
+    this.filterByTypeArray = this.props.allActivities; 
+    this.filterByGradeArray = this.props.allActivities; 
+    this.filterByTopicArray = this.props.allActivities;
+    this.filterBySearchArray = this.props.allActivities;
+    console.log("props in newActivityComp constr are ", this.props.allActivities);
+
     this.state = {
-      activities: Activities,
-      totalFilteredActivities: Activities,
+      allActivities: {},
+      totalFilteredActivities: {},
       // searchfield: "",
       // filteredTopicTypeGrade: [], //maybenot
       // typeSearchfield: ""
     };
-    console.log(this.props)
   }
 
   // ********  not sure we need this method as these are set in constructor - GREG ******
@@ -36,6 +36,11 @@ class ActivityComp extends Component {
   }
   // *********
 
+  componentDidMount = () => {
+      console.log("NewActivityComp mounted!!  props activities are ", this.props.allActivities);
+      this.setState({allActivities: this.props.allActivities});
+
+  }
   onSearchChange = e => {
     let { activities } = this.state;
     this.filterBySearchArray = activities.filter(activity => {
@@ -150,8 +155,8 @@ class ActivityComp extends Component {
   
 
   render() {    
-    console.log("the props", this.props)
-    return !this.state.totalFilteredActivities.length ? (
+    console.log("activities length in new activity render are  ", this.props.allActivities.length)
+    return !this.props.allActivities ? (
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
@@ -179,7 +184,7 @@ class ActivityComp extends Component {
         <br />
         <div className="activityCardComp">
           <Scroll>
-            <CardList activities={this.state.totalFilteredActivities} />
+            {/* <CardList activities={this.props.allActivities} /> */}
           </Scroll>
         </div>
       </div>
@@ -187,4 +192,4 @@ class ActivityComp extends Component {
   }
 }
 
-export default ActivityComp;
+export default NewActivityComp;

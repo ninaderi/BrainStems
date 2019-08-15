@@ -23,7 +23,7 @@ render() {
     return (
         <div className = "activityDiv">
         <div className = "topSection">
-            <img id="activityImage" src = {vol} alt = "Picture of Activity" />
+            <img id="activityImage" src = {vol} alt = "Activity" />
             <div className = "textField">
                 <table>
                     <tbody>
