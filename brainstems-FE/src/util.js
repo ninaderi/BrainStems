@@ -9,7 +9,7 @@ const filterByGrade = (array, Activities) => {
         return "";
       }
     });
-    return filteredActivities;
+    return filteredActivities.length > 0 ? filteredActivities: ["empty", "empty"];
   } else {
     return Activities;
   }
@@ -38,7 +38,7 @@ const filterByTopic = (filterArray, Activities) => {
       } while (activity.topic[i]);
       return activity;
     });
-    return filteredActivities;
+    return filteredActivities.length > 0 ? filteredActivities: ["empty", "empty"];
   } else {
     return Activities;
   }

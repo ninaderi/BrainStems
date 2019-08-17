@@ -18,45 +18,30 @@ import {
 class NewActivityComp extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       allActivities: {},
-      totalFilteredActivities: {}
-      // searchfield: "",
-      // filteredTopicTypeGrade: [], //maybenot
-      // typeSearchfield: ""
+      totalFilteredActivities: {},
+      filterByGradeActive: false,
+      filterBySearchActive: false,
+      filterByTopicActive: false,
+      filterByTypeActive: false
     };
     this.initialCounter = 0;
   }
 
-
-
-
-    componentDidMount = async() => {
-      let response = await fetch("http://localhost:4000/newActivity")
-      response = await response.json()
-      this.setState({activities: response,
-        totalFilteredActivities: response
-      })
-    
-
-  }
-
+  componentDidMount = async () => {
+    let response = await fetch("http://localhost:4000/newActivity");
+    response = await response.json();
+    this.setState({ activities: response, totalFilteredActivities: response });
+  };
 
   onSearchChange = e => {
     this.filterBySearchArray = filterBySearch(
       e.target.value,
       this.props.allActivities.Activities
     );
-    this.filterByGradeArray = this.state.filterByGradeActive
-      ? this.filterByGradeArray
-      : this.props.allActivities.Activities;
-    this.filterByTopicArray = this.state.filterByTopicActive
-      ? this.filterByTopicArray
-      : this.props.allActivities.Activities;
-    this.filterByTypeArray = this.state.filterByTypeActive
-      ? this.filterByTypeArray
-      : this.props.allActivities.Activities;
+   
 
     this.manageFilter();
     this.setState({
@@ -66,7 +51,10 @@ class NewActivityComp extends Component {
   };
 
   manageFilter = () => {
-
+    console.log( this.filterByTypeArray,
+      this.filterByGradeArray,
+      this.filterByTopicArray,
+      this.filterBySearchArray, "9999999999999999999999999999999999999999999")
     let arrays = [
       this.filterByTypeArray,
       this.filterByGradeArray,
@@ -78,6 +66,7 @@ class NewActivityComp extends Component {
         return a.indexOf(v) !== -1;
       });
     });
+    console.log("resultttttttttttttttt", result)
     this.setState({ totalFilteredActivities: result });
   };
 
@@ -86,15 +75,7 @@ class NewActivityComp extends Component {
       array,
       this.props.allActivities.Activities
     );
-    this.filterByGradeArray = this.state.filterByGradeActive
-      ? this.filterByGradeArray
-      : this.props.allActivities.Activities;
-    this.filterByTopicArray = this.state.filterByTopicActive
-      ? this.filterByTopicArray
-      : this.props.allActivities.Activities;
-    this.filterBySearchArray = this.state.filterBySearchActive
-      ? this.filterBySearchArray
-      : this.props.allActivities.Activities;
+   
 
     this.manageFilter();
     this.setState({ filterByTypeActive: array.length > 0 ? true : false });
@@ -105,46 +86,46 @@ class NewActivityComp extends Component {
       array,
       this.props.allActivities.Activities
     );
-    this.filterByTypeArray = this.state.filterByTypeActive
-      ? this.filterByTypeArray
-      : this.props.allActivities.Activities;
-    this.filterByTopicArray = this.state.filterByTopicActive
-      ? this.filterByTopicArray
-      : this.props.allActivities.Activities;
-    this.filterBySearchArray = this.state.filterBySearchActive
-      ? this.filterBySearchArray
-      : this.props.allActivities.Activities;
+   
 
     this.manageFilter();
     this.setState({ filterByGradeActive: array.length > 0 ? true : false });
   };
 
   onCheckFilterTopic = array => {
+    console.log(this.filterByTopicArray, "filter by topic 1")
     this.filterByTopicArray = filterByTopic(
       array,
       this.props.allActivities.Activities
     );
-    this.filterBySearchArray = this.state.filterBySearchActive
-      ? this.filterBySearchArray
-      : this.props.allActivities.Activities;
-    this.filterByTypeArray = this.state.filterByTypeActive
-      ? this.filterByTypeArray
-      : this.props.allActivities.Activities;
-    this.filterByGradeArray = this.state.filterByGradeActive
-      ? this.filterByGradeArray
-      : this.props.allActivities.Activities;
-
+    console.log(this.filterByTopicArray, "filter by topic 2")
     this.manageFilter();
     this.setState({ filterByTopicActive: array.length > 0 ? true : false });
   };
 
   initializeState = () => {
-  if(this.initialCounter > 1) return
-    this.setState({totalFilteredActivities: this.props.allActivities.Activities})
+    if (this.initialCounter > 1) return;
+    this.setState({
+      totalFilteredActivities: this.props.allActivities.Activities
+    });
     this.initialCounter++;
-  }
+  };
   render() {
-    
+    this.filterByGradeArray = this.state.filterByGradeActive
+      ? this.filterByGradeArray
+      : this.props.allActivities.Activities;
+    this.filterByTopicArray = this.state.filterByTypeActive
+      ? this.filterByTopicArray
+      : this.props.allActivities.Activities;
+    this.filterBySearchArray = this.state.filterBySearchActive
+      ? this.filterBySearchArray
+      : this.props.allActivities.Activities;
+      this.filterByTypeArray = this.state.filterByTypeActive
+      ? this.filterByTypeArray
+      : this.props.allActivities.Activities;  
+
+      let filterActive = (this.state.filterBySearchActive || this.state.filterByGradeActive || this.state.filterByTypeActive || this.state.filterByTopicActive)
+      console.log(filterActive, "filter active")
     return !this.props.allActivities ? (
       <h1>No Activities Found ...</h1>
     ) : (
@@ -172,7 +153,11 @@ class NewActivityComp extends Component {
         <br />
         <div className="activityCardComp">
           <Scroll>
-          {this.state.totalFilteredActivities[0] ? <CardList activities={this.state.totalFilteredActivities} /> : <CardList activities={this.props.allActivities.Activities} />}
+            {this.state.totalFilteredActivities[0] ? (
+              <CardList activities={this.state.totalFilteredActivities} />
+            ) : (
+              !filterActive ? <CardList activities={this.props.allActivities.Activities} />: null
+            )}
           </Scroll>
         </div>
       </div>
