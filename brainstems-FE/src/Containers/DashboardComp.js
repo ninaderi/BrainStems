@@ -21,8 +21,6 @@ class DashboardComp extends React.Component {
         let response = await fetch("http://localhost:4000/newActivity")
         response = await response.json()
         this.setState({activities: response})
-        // console.log(response, "This is Dashboardcomp response")
-
     }
 
     render() {

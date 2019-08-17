@@ -8,9 +8,10 @@ const SearchBox = ({ searchChange }) => {
       </div>
       <input
         className="search"
-        type="search"
+        type="text"
         placeholder="Search Here for New Activity"
         onChange={searchChange}
+        id="searchBox"
       />
     </div>
   );

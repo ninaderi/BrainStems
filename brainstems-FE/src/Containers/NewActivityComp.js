@@ -8,160 +8,148 @@ import FilterApp from "../Components/FilterApp";
 import { Activities } from "../Components/Activities";
 import SearchBox from "../Components/SearchBox";
 import "../styles/NewActivityComp.css";
+import {
+  filterBySearch,
+  filterByGrade,
+  filterByTopic,
+  filterByType
+} from "../util";
 
 class NewActivityComp extends Component {
   constructor(props) {
     super(props);
-    this.filterByTypeArray = this.props.allActivities; 
-    this.filterByGradeArray = this.props.allActivities; 
-    this.filterByTopicArray = this.props.allActivities;
-    this.filterBySearchArray = this.props.allActivities;
-    console.log("props in newActivityComp constr are ", this.props.allActivities);
-
+    
     this.state = {
       allActivities: {},
-      totalFilteredActivities: {},
+      totalFilteredActivities: {}
       // searchfield: "",
       // filteredTopicTypeGrade: [], //maybenot
       // typeSearchfield: ""
     };
+    this.initialCounter = 0;
   }
 
-  // ********  not sure we need this method as these are set in constructor - GREG ******
-  componentDidMount() {  
-    this.setState({ 
-      activities: Activities,
-      totalFilteredActivities: Activities
-    });
-  }
-  // *********
 
-  componentDidMount = () => {
-      console.log("NewActivityComp mounted!!  props activities are ", this.props.allActivities);
-      this.setState({allActivities: this.props.allActivities});
+
+
+    componentDidMount = async() => {
+      let response = await fetch("http://localhost:4000/newActivity")
+      response = await response.json()
+      this.setState({activities: response,
+        totalFilteredActivities: response
+      })
+    
 
   }
+
+
   onSearchChange = e => {
-    let { activities } = this.state;
-    this.filterBySearchArray = activities.filter(activity => {
-      return activity.name.toLowerCase().includes(e.target.value.toLowerCase());
+    this.filterBySearchArray = filterBySearch(
+      e.target.value,
+      this.props.allActivities.Activities
+    );
+    this.filterByGradeArray = this.state.filterByGradeActive
+      ? this.filterByGradeArray
+      : this.props.allActivities.Activities;
+    this.filterByTopicArray = this.state.filterByTopicActive
+      ? this.filterByTopicArray
+      : this.props.allActivities.Activities;
+    this.filterByTypeArray = this.state.filterByTypeActive
+      ? this.filterByTypeArray
+      : this.props.allActivities.Activities;
+
+    this.manageFilter();
+    this.setState({
+      filterBySearchActive:
+        document.getElementById("searchBox").value !== "" ? true : false
     });
-    this.combineAllFilters();
-    console.log("search filter is ", this.filterBySearchArray);
-    // this.setState({ searchfield: e.target.value });
-    // console.log("****************this is the onsearchchange function", e.target.value);
+  };
+
+  manageFilter = () => {
+
+    let arrays = [
+      this.filterByTypeArray,
+      this.filterByGradeArray,
+      this.filterByTopicArray,
+      this.filterBySearchArray
+    ];
+    let result = arrays.shift().filter(function(v) {
+      return arrays.every(function(a) {
+        return a.indexOf(v) !== -1;
+      });
+    });
+    this.setState({ totalFilteredActivities: result });
   };
 
   onCheckFilterType = array => {
-    const { activities } = this.state;
+    this.filterByTypeArray = filterByType(
+      array,
+      this.props.allActivities.Activities
+    );
+    this.filterByGradeArray = this.state.filterByGradeActive
+      ? this.filterByGradeArray
+      : this.props.allActivities.Activities;
+    this.filterByTopicArray = this.state.filterByTopicActive
+      ? this.filterByTopicArray
+      : this.props.allActivities.Activities;
+    this.filterBySearchArray = this.state.filterBySearchActive
+      ? this.filterBySearchArray
+      : this.props.allActivities.Activities;
 
-    let filteredActivities;
-    if (array.length > 0) {
-      filteredActivities = activities.filter(activity => {
-        if (array.includes(activity.type)) {
-          return activity;
-        } else {
-          return "";
-        }
-      });
-    } else {
-        filteredActivities = activities;
-    }
-
-    console.log("filter type array is ", filteredActivities)
-    this.filterByTypeArray = filteredActivities;
-    this.combineAllFilters();
-
+    this.manageFilter();
+    this.setState({ filterByTypeActive: array.length > 0 ? true : false });
   };
 
   onCheckFilterGrade = array => {
-    const { activities } = this.state;
+    this.filterByGradeArray = filterByGrade(
+      array,
+      this.props.allActivities.Activities
+    );
+    this.filterByTypeArray = this.state.filterByTypeActive
+      ? this.filterByTypeArray
+      : this.props.allActivities.Activities;
+    this.filterByTopicArray = this.state.filterByTopicActive
+      ? this.filterByTopicArray
+      : this.props.allActivities.Activities;
+    this.filterBySearchArray = this.state.filterBySearchActive
+      ? this.filterBySearchArray
+      : this.props.allActivities.Activities;
 
-    let filteredActivities;
-    console.log("array lebgth ", array.length);
-    if (array.length > 0) {
-      
-      filteredActivities = activities.filter(activity => {
-        console.log("array is ", array, "and activity grade is ", activity.grade);
-        if (array.includes(activity.grade)) {
-          return activity;
-        } else {
-          return "";
-        }
-      });
-    } else {
-        filteredActivities = activities;
-    }
-
-    console.log("filter grade array is ", filteredActivities)
-    this.filterByGradeArray = filteredActivities;
-    this.combineAllFilters();
-
+    this.manageFilter();
+    this.setState({ filterByGradeActive: array.length > 0 ? true : false });
   };
 
-  onCheckFilterTopic = filterArray => {
-    const { activities } = this.state;
-    console.log("filterArray is ", filterArray.length);
-    let filteredActivities;
+  onCheckFilterTopic = array => {
+    this.filterByTopicArray = filterByTopic(
+      array,
+      this.props.allActivities.Activities
+    );
+    this.filterBySearchArray = this.state.filterBySearchActive
+      ? this.filterBySearchArray
+      : this.props.allActivities.Activities;
+    this.filterByTypeArray = this.state.filterByTypeActive
+      ? this.filterByTypeArray
+      : this.props.allActivities.Activities;
+    this.filterByGradeArray = this.state.filterByGradeActive
+      ? this.filterByGradeArray
+      : this.props.allActivities.Activities;
 
-    if (filterArray.length > 0) {
-      filteredActivities = activities.filter(activity => {
-        console.log("filterArray is ", filterArray, "and activity topic is ", activity.topic);
-        let i = 0;
-        do {
-          console.log("activity topic iter is ", activity.topic[i])
-          if (filterArray.includes(activity.topic[i])) {  
-            console.log("topic matches");
-            break;
-          } else {
-            console.log("no matches");
-            return "";
-          }
-          i += 1;
-        } while (activity.topic[i]);
-        return activity;
-      });
-    } else {
-        filteredActivities = activities;
-    }
-
-    console.log("final filter topic filterArray is ", filteredActivities)
-    this.filterByTopicArray = filteredActivities;
-    this.combineAllFilters();
-
+    this.manageFilter();
+    this.setState({ filterByTopicActive: array.length > 0 ? true : false });
   };
 
-  combineAllFilters = () => {
-    // find all common activities and push resultant to state
-    let arrays = [this.filterByTypeArray, this.filterByGradeArray, 
-      this.filterByTopicArray, this.filterBySearchArray];
-    console.log(`combined array length is ${arrays.length}`);
-    console.log("combined arrays are ", arrays, "and first array is ", arrays[0]);
-
-    let result = arrays.shift().filter(function(v) {
-      return arrays.every(function(a) {
-          return a.indexOf(v) !== -1;
-      });
-    });
-
-    console.log("final array is ", result);
-    this.setState({totalFilteredActivities: result});
+  initializeState = () => {
+  if(this.initialCounter > 1) return
+    this.setState({totalFilteredActivities: this.props.allActivities.Activities})
+    this.initialCounter++;
   }
+  render() {
     
-
-   // this.setState({ activities: filteredActivities });
-    // console.log("***************onCheckFilter", array);
-    //if type checkbox is true then filter on those
-  
-
-  render() {    
-    console.log("activities length in new activity render are  ", this.props.allActivities.length)
     return !this.props.allActivities ? (
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
         <div className="filterComps">
-
           {/* <FilterApp className="filterbox" /> */}
 
           {/* this is the search input by keyword */}
@@ -184,7 +172,7 @@ class NewActivityComp extends Component {
         <br />
         <div className="activityCardComp">
           <Scroll>
-            {/* <CardList activities={this.props.allActivities} /> */}
+          {this.state.totalFilteredActivities[0] ? <CardList activities={this.state.totalFilteredActivities} /> : <CardList activities={this.props.allActivities.Activities} />}
           </Scroll>
         </div>
       </div>
