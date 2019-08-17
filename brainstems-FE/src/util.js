@@ -1,8 +1,8 @@
 const filterByGrade = (array, Activities) => {
-  console.log("array lebgth ", array.length);
+ 
   if (array.length > 0) {
     let filteredActivities = Activities.filter(activity => {
-      console.log("array is ", array, "and activity grade is ", activity.grade);
+      
       if (array.includes(activity.grade)) {
         return activity;
       } else {
@@ -18,15 +18,10 @@ const filterByGrade = (array, Activities) => {
 const filterByTopic = (filterArray, Activities) => {
   if (filterArray.length > 0) {
     let filteredActivities = Activities.filter(activity => {
-      console.log(
-        "filterArray is ",
-        filterArray,
-        "and activity topic is ",
-        activity.topic
-      );
+  
       let i = 0;
       do {
-        console.log("activity topic iter is ", activity.topic[i]);
+      
         if (filterArray.includes(activity.topic[i])) {
           console.log("topic matches");
           break;

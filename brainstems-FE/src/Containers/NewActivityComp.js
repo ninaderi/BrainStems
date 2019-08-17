@@ -51,10 +51,7 @@ class NewActivityComp extends Component {
   };
 
   manageFilter = () => {
-    console.log( this.filterByTypeArray,
-      this.filterByGradeArray,
-      this.filterByTopicArray,
-      this.filterBySearchArray, "9999999999999999999999999999999999999999999")
+  
     let arrays = [
       this.filterByTypeArray,
       this.filterByGradeArray,
@@ -66,7 +63,7 @@ class NewActivityComp extends Component {
         return a.indexOf(v) !== -1;
       });
     });
-    console.log("resultttttttttttttttt", result)
+
     this.setState({ totalFilteredActivities: result });
   };
 
@@ -93,12 +90,12 @@ class NewActivityComp extends Component {
   };
 
   onCheckFilterTopic = array => {
-    console.log(this.filterByTopicArray, "filter by topic 1")
+   
     this.filterByTopicArray = filterByTopic(
       array,
       this.props.allActivities.Activities
     );
-    console.log(this.filterByTopicArray, "filter by topic 2")
+  
     this.manageFilter();
     this.setState({ filterByTopicActive: array.length > 0 ? true : false });
   };
@@ -125,7 +122,7 @@ class NewActivityComp extends Component {
       : this.props.allActivities.Activities;  
 
       let filterActive = (this.state.filterBySearchActive || this.state.filterByGradeActive || this.state.filterByTypeActive || this.state.filterByTopicActive)
-      console.log(filterActive, "filter active")
+     
     return !this.props.allActivities ? (
       <h1>No Activities Found ...</h1>
     ) : (

@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./Card";
 
 const CardList = ({ activities }) => {
-  console.log(activities)
   return (
     <div className="activityScrollDiv" >
       {activities && activities.map((user, i) => {

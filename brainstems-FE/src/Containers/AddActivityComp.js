@@ -4,7 +4,7 @@ import "../styles/activitiesCard.css";
 
 class AddActivityComp extends React.Component {
   render() {
-    console.log(Activities);
+
     return (
       <div>
         <div>
