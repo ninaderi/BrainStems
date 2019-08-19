@@ -18,10 +18,12 @@ class DashboardComp extends React.Component {
     };
 
     componentDidMount = async() => {
-        let response = await fetch("http://localhost:4000/newActivity")
+        let response = await fetch("http://localhost:4000/newActivitys")
         response = await response.json()
         this.setState({activities: response})
     }
+
+ 
 
     render() {
 
@@ -47,11 +49,11 @@ class DashboardComp extends React.Component {
                     <div id='bodyContainer'>
                     
                         {/* <Route exact path='/' render = {(props) => <NewActivityComp allActivities = {this.state.activities}/>}/>    */}
-                        <Route path='/newActivity' render = {(props) => <NewActivityComp allActivities = {this.state.activities}/>} />
+                        <Route path='/newActivity' allActivities2 = {this.state.activities} render = {(props) => <NewActivityComp allActivities = {this.state.activities}/>} />
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/studentlogin' component={picLogin} />
-                        {/* <Route exact path='/addactivity/:activityId' render = {(props) => <AddActivityComp allActivities = {this.state.activities}/>} /> */}
+                        <Route exact path='/addactivity/:activityId' allActivities2 = {this.state.activities} render = {(props) => <AddActivityComp allActivities = {this.state.activities}/>} />}
 
                     
                     </div>

@@ -7,6 +7,7 @@ import Scroll from "../Components/Scroll";
 import FilterApp from "../Components/FilterApp";
 import { Activities } from "../Components/Activities";
 import SearchBox from "../Components/SearchBox";
+import AddActivityComp from "../Containers/AddActivityComp"
 import "../styles/NewActivityComp.css";
 import {
   filterBySearch,
@@ -25,13 +26,14 @@ class NewActivityComp extends Component {
       filterByGradeActive: false,
       filterBySearchActive: false,
       filterByTopicActive: false,
-      filterByTypeActive: false
+      filterByTypeActive: false,
+      showActivityComp: false
     };
     this.initialCounter = 0;
   }
 
   componentDidMount = async () => {
-    let response = await fetch("http://localhost:4000/newActivity");
+    let response = await fetch("http://localhost:4000/newActivitys");
     response = await response.json();
     this.setState({ activities: response, totalFilteredActivities: response });
   };
@@ -100,14 +102,15 @@ class NewActivityComp extends Component {
     this.setState({ filterByTopicActive: array.length > 0 ? true : false });
   };
 
-  initializeState = () => {
-    if (this.initialCounter > 1) return;
-    this.setState({
-      totalFilteredActivities: this.props.allActivities.Activities
-    });
-    this.initialCounter++;
-  };
+  handleClick = (activityId) => {
+  
+    this.setState({newActivity: this.state.activities.Activities[activityId],
+                  showActivityComp: true
+    })
+  }
   render() {
+
+   
     this.filterByGradeArray = this.state.filterByGradeActive
       ? this.filterByGradeArray
       : this.props.allActivities.Activities;
@@ -127,6 +130,7 @@ class NewActivityComp extends Component {
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
+      {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} />: null}
         <div className="filterComps">
           {/* <FilterApp className="filterbox" /> */}
 
@@ -151,9 +155,9 @@ class NewActivityComp extends Component {
         <div className="activityCardComp">
           <Scroll>
             {this.state.totalFilteredActivities[0] ? (
-              <CardList activities={this.state.totalFilteredActivities} />
+              <CardList activities={this.state.totalFilteredActivities} handleClick = {this.handleClick} />
             ) : (
-              !filterActive ? <CardList activities={this.props.allActivities.Activities} />: null
+              !filterActive ? <CardList activities={this.props.allActivities.Activities} handleClick = {this.handleClick} />: null
             )}
           </Scroll>
         </div>

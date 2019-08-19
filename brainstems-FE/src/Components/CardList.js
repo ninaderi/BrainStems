@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-const CardList = ({ activities }) => {
+const CardList = ({ activities, handleClick }) => {
   return (
     <div className="activityScrollDiv" >
       {activities && activities.map((user, i) => {
@@ -16,6 +16,7 @@ const CardList = ({ activities }) => {
             grade={activities[i].grade}
             type={activities[i].type}
             img={activities[i].img}
+            handleClick = {handleClick}
           />
         );
       })}
