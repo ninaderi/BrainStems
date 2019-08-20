@@ -8,6 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const express = require('express');
 const Activities = require('./Activities')
+const util = require('./appUtil')
 
 const app = express();
 app.use(cors());
@@ -40,9 +41,8 @@ knex.schema.createTable('student', (table) => {
 
   knex.schema.createTable('activity', (table) => {
 	table.increments('id').primary();
-	table.string('code');
-	table.string('wvname');
-	table.string('wvUId');
+	table.string('activityCode');
+	table.string('wvId');
 	table.timestamps();
 	table.date("expiry");
 	table.boolean("status");
@@ -91,8 +91,25 @@ app.get('/', (req, res) => {
 	res.send( "Hello World!")
 })
 
-app.get('/newActivity', (req, res) => {
+app.get('/activities', (req, res) => {
 	res.send(Activities)
+})
+
+app.post('/addActivity', (req, res) => {
+	
+	let activityCode = util.generateActivityCode(8);
+	try {
+	knex('activity').insert({
+		activityCode: activityCode,
+	wvId: req.body.wvId,
+	expiry: "TBD",
+	status: true,
+	}).then(data => res.send({status: "activity added"}))
+	
+} catch(err) {
+	console.log(err)
+}
+	
 })
 
 app.post('/logIn', (req, res) => {
