@@ -23,7 +23,10 @@ class AddActivityComp extends React.Component {
          })
      })
      const response = await data.json();
-     console.log(response)
+     response.status === "activity added"
+     ? window.location.assign("./existingactivities")
+     : console.log("unable to add activity")
+     
      return
   }
 
