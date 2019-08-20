@@ -20,43 +20,36 @@ handleClick = () => {
 
 render() {
 
+    console.log(this.props)
     return (
         <div className = "activityDiv">
         <div className = "topSection">
-            <img id="activityImage" src = {vol} alt = "Activity" />
+            <img id="activityImage" src = {this.props.img} alt = "Activity" />
             <div className = "textField">
                 <table>
                     <tbody>
                         <tr>
                             <th>Date Class Created</th>
-                            <td>Props for Date Class Created</td>
+                            <td>{this.props.dateCreated}</td>
                         </tr>
                         <tr>
                             <th>Expiry Date</th>
-                            <td>Props for Class Expiry Date</td>
+                            <td>{this.props.expiry}</td>
                         </tr>
                         <tr>
                             <th>Classroom Name</th>
-                            <td>Props for Classroom Name</td>
+                            <td>{this.props.classRoomName}</td>
                         </tr>
                         <tr>
                             <th>Grade</th>
-                            <td>Props for Grade</td>
-                        </tr>
-                        <tr>
-                            <th>Other Info</th>
-                            <td>Props for Other Info</td>
-                        </tr>
-                        <tr>
-                            <th>Assigned Activities</th>
-                            <td>Props for Assigned Activities</td>
+                            <td>{this.props.grade}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div className = "activityCode">
                 <h1>Activity Code</h1>
-                <p>{"props for activity code"}</p>
+                <p>{this.props.activityCode}</p>
                 <button className = "button">Close Activity</button>
                 {this.state.displayDetails 
                 ?  <button className = "button" onClick = {this.handleClick}>Close Details</button>

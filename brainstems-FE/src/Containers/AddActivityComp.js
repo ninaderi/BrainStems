@@ -17,7 +17,7 @@ class AddActivityComp extends React.Component {
        method: "POST",
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify({
-        nameOfClass: this.state.nameOfClass,
+        nameOfClass: this.state.classRoomName,
         wvId: this.props.activity.id,
         otherInfo: this.state.otherInfo,
          })
@@ -26,7 +26,7 @@ class AddActivityComp extends React.Component {
      response.status === "activity added"
      ? window.location.assign("./existingactivities")
      : console.log("unable to add activity")
-     
+
      return
   }
 
@@ -50,7 +50,7 @@ class AddActivityComp extends React.Component {
             <p>Grade: {activity.grade}</p>
             <p>Activity Tags</p>
             <div>
-              Class Name <input type="text" name = "nameOfClass" onChange = {this.handleChange}/> 
+              Class Name <input type="text" name = "classRoomName" onChange = {this.handleChange}/> 
               Other Info <input type="text" name = "otherInfo" onChange = {this.handleChange}/>
             </div>
           </div>
