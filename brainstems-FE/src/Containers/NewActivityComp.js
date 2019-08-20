@@ -33,7 +33,7 @@ class NewActivityComp extends Component {
   }
 
   componentDidMount = async () => {
-    let response = await fetch("http://localhost:4000/newActivity");
+    let response = await fetch("http://localhost:4000/activities");
     response = await response.json();
     this.setState({ activities: response, totalFilteredActivities: response });
   };
@@ -105,12 +105,13 @@ class NewActivityComp extends Component {
 
   handleClick = (activityId) => {
   
-    this.setState({newActivity: this.state.activities.Activities[activityId],
+    this.setState({newActivity: this.state.activities.Activities[activityId - 1],
                   showActivityComp: true
     })
   }
   render() {
 
+    console.log(this.state)
    
     this.filterByGradeArray = this.state.filterByGradeActive
       ? this.filterByGradeArray
@@ -131,7 +132,7 @@ class NewActivityComp extends Component {
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
-      {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} />: null}
+      {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} /> : null}
         <div className="filterComps">
           {/* <FilterApp className="filterbox" /> */}
 

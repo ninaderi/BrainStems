@@ -8,6 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const express = require('express');
 const Activities = require('./Activities')
+const util = require('./appUtil')
 
 const app = express();
 app.use(cors());
@@ -40,17 +41,21 @@ knex.schema.createTable('student', (table) => {
 
   knex.schema.createTable('activity', (table) => {
 	table.increments('id').primary();
-	table.string('code');
-	table.string('wvname');
-	table.string('wvUId');
+	table.string('activityCode');
+	table.string('wvId');
+	table.string('classRoomName');
+	table.string('name');
+	table.string('img');
+	table.string('grade');
 	table.timestamps();
 	table.date("expiry");
 	table.boolean("status");
-	table.unique('code');
+	table.unique('activityCode');
   }).then(function () {
 	console.log('Activity Table is Created!');
   }).catch(err => console.log(err));
-  
+
+ 
   knex.schema.createTable('teacher', (table) => {
 	table.increments('id').primary();
 	table.string('fname');
@@ -79,11 +84,34 @@ knex.schema.createTable('student', (table) => {
   }).catch(err => console.log(err));
 
 
-  //****************************** SAMPLE KNEX *********************************************8
-//   knex('movies').insert({title: 'Slaughterhouse Fiveness'}).then(data => console.log(data))
+  for(let x = 0; x<7; x++) {
+	activityCode = util.generateActivityCode(8)
+	knex("activity").insert({
+		activityCode: activityCode,
+		wvID: Activities.Activities[x].id,
+		grade: Activities.Activities[x].grade,
+		expiry: "TBD",
+		status: 1,
+		name: Activities.Activities[x].name,
+		img: Activities.Activities[x].img,
+		classRoomName: "EvolveU cohort 1"
+	}).then(data => console.log(data))
+  }
+  
+  for(let x = 7; x<9; x++) {
+	activityCode = util.generateActivityCode(8)
+	  knex("activity").insert({
+		  activityCode: activityCode,
+		  wvID: Activities.Activities[x].id,
+		  grade: Activities.Activities[x].grade,
+		  expiry: "TBD",
+		  status: 0,
+		  name: Activities.Activities[x].name,
+		  img: Activities.Activities[x].img,
+		classRoomName: "EvolveU cohort 2"
+	  }).then(data => console.log(data))
+	}
 
-//   knex.select().table('movies')
-//   .then(data => console.log(data))
 
 
 
@@ -91,8 +119,33 @@ app.get('/', (req, res) => {
 	res.send( "Hello World!")
 })
 
-app.get('/newActivity', (req, res) => {
+app.get('/activities', (req, res) => {
 	res.send(Activities)
+})
+
+app.post('/addActivity', (req, res) => {
+	
+	let activityCode = util.generateActivityCode(8);
+	try {
+	knex('activity').insert({
+		activityCode: activityCode,
+	wvId: req.body.wvId,
+	expiry: "TBD",
+	status: true,
+	classRoomName: req.body.classRoomName
+	}).then(data => res.send({status: "activity added"}))
+	
+} catch(err) {
+	console.log(err)
+}
+	
+})
+
+app.get('/exsistingActivities', (req, res) => {
+	
+let subquery = knex('activity').select()
+.then(data => {res.send({data})})
+	
 })
 
 app.post('/logIn', (req, res) => {
