@@ -104,7 +104,7 @@ class NewActivityComp extends Component {
 
   handleClick = (activityId) => {
   
-    this.setState({newActivity: this.state.activities.Activities[activityId],
+    this.setState({newActivity: this.state.activities.Activities[activityId - 1],
                   showActivityComp: true
     })
   }
@@ -130,7 +130,7 @@ class NewActivityComp extends Component {
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
-      {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} />: null}
+      {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} /> : null}
         <div className="filterComps">
           {/* <FilterApp className="filterbox" /> */}
 
