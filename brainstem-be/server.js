@@ -23,7 +23,7 @@ var knex = require('knex')({
 });
 
 
-console.log(Activities)
+// console.log(Activities)
 
 // *****************************THE TABLES IN KNEX ARE INSTANTIATED BELOW FEEL FREE TO EDIT AND ADD NEW TABLES**************************
 
