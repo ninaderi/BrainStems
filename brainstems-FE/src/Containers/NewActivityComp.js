@@ -4,8 +4,8 @@ import FilterGradeComp from "../Components/FilterGradeComp";
 import FilterTopicComp from "../Components/FilterTopicComp";
 import FilterTypeComp from "../Components/FilterTypeComp";
 import Scroll from "../Components/Scroll";
-import FilterApp from "../Components/FilterApp";
-import { Activities } from "../Components/Activities";
+// import FilterApp from "../Components/FilterApp";
+// import { Activities } from "../Components/Activities";
 import SearchBox from "../Components/SearchBox";
 import AddActivityComp from "../Containers/AddActivityComp"
 import "../styles/NewActivityComp.css";
@@ -33,7 +33,7 @@ class NewActivityComp extends Component {
   }
 
   componentDidMount = async () => {
-    let response = await fetch("http://localhost:4000/newActivitys");
+    let response = await fetch("http://localhost:4000/newActivity");
     response = await response.json();
     this.setState({ activities: response, totalFilteredActivities: response });
   };
@@ -46,6 +46,7 @@ class NewActivityComp extends Component {
    
 
     this.manageFilter();
+    
     this.setState({
       filterBySearchActive:
         document.getElementById("searchBox").value !== "" ? true : false
