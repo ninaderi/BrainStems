@@ -9,16 +9,14 @@ const Card = props => {
   return (
     <div onClick = {() => props.handleClick(props.activityId)}>
       <div className="card">
-        <div>
           <img
             className="cardimage"
             alt="name goes here"
             src={`${props.img}`}
           />
-        </div>
-        <div>
-          <h2 className="activityCardName">{name}</h2>
-        </div>
+          <div className="activityCardName">
+            {name}
+          </div>
       </div>
     </div>
   );
