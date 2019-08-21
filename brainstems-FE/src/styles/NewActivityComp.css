@@ -1,48 +1,7 @@
-/* @font-face {
-  font-family: "Calibre";
-  font-style: normal;
-  font-weight: normal;
-} */
-
-/* h1 {
-  font-family: "Calibre";
-  font-weight: 200;
-  color: #033819;
-} */
-
-/* #container { 
-  
-  display: grid;
-  grid-template-rows: minmax(100px, auto) minmax(14px, auto) 1fr;
-  grid-template-columns: 25% 1fr 1fr;
-  
-  grid-template-areas: 
-    "wv_header wv_header mf_header"
-    "menu activities activities"
-    ". activities activities";
-} */
-/**************************
-//i dont believe the tc needs to be wrapped
-//each area can be wrapped which would include the filtercomps and the cardcomp
-//*************************
-/* .tc {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* grid-template-columns: 25% 1fr 1fr 1fr;                 
-  /*auto auto auto auto;*/
-/* grid-template-rows: 30% auto;
-  grid-template-areas: 
-    "filterbox filterbox filterbox filterbox"
-    "activities activities activities activities" */
-
 .filterComps {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  /* flex-wrap: wrap; */
-  /* display: inline-block;
-  min-block-size: 25%; */
 }
 
 .heading {
@@ -81,9 +40,6 @@ input::placeholder {
   flex-direction: row;
   flex-wrap: wrap;
 }
-/* .activities {
-  grid-area: activities;
-} */
 
 .activityScrollDiv {
   display: flex;
@@ -92,24 +48,31 @@ input::placeholder {
 
 }
 .card {
-  background-color: orange;
+  position: relative;
+  background-color: white;
   display: flex;
-  flex-direction: row;
-  border-style: solid;
-  padding: 2px;
-  margin: 2px;
-  /* font-size: 4px; */
-  width: 300px;
-  height: 150px;
+  flex-direction: column;
+  box-shadow: 5px 5px 15px 3px #A5A5A5;
+  margin: 20px;
+  width: 275px;
+  height: 230px;
 }
+
 .cardimage {
-  width: 130px;
-  height: 130px;
-  padding: 10px;
+  border-bottom-style: solid;
+  border-width: 1px;
 }
 
 .activityCardName {
+  text-align: center;
+  font-family: "Chevin Pro", sans-serif;
+  color: #532380;
+  background: white;
+  
+  
+  padding: 10px 10px 3px 10px;
   font-size: 20px;
-  letter-spacing: normal;
+  font-weight: bold;
+  letter-spacing: 1px;
 
 }
