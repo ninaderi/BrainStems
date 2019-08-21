@@ -20,7 +20,7 @@ handleClick = () => {
 
 render() {
 
-    console.log(this.props)
+    console.log(this.props, "props from activity card")
     return (
         <div className = "activityDiv">
         <div className = "topSection">
@@ -30,7 +30,7 @@ render() {
                     <tbody>
                         <tr>
                             <th>Date Class Created</th>
-                            <td>{this.props.dateCreated}</td>
+                            <td>{new Date(this.props.created_at).toLocaleDateString()}</td>
                         </tr>
                         <tr>
                             <th>Expiry Date</th>

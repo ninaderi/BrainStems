@@ -11,7 +11,7 @@ const ActivitiesCardList = ({ activities, handleClick }) => {
         return (
           <ActivitiesCard
             key={i}
-            dateCreated ={activities[i].created_at}
+            created_at ={activities[i].created_at}
             classRoomName={activities[i].classRoomName}
             expiry={activities[i].expiry}
             grade={activities[i].grade}

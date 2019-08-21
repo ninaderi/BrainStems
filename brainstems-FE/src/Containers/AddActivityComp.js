@@ -17,9 +17,12 @@ class AddActivityComp extends React.Component {
        method: "POST",
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify({
-        nameOfClass: this.state.classRoomName,
+        classRoomName: this.state.classRoomName,
         wvId: this.props.activity.id,
         otherInfo: this.state.otherInfo,
+        img: this.props.activity.img,
+        grade: this.props.activity.grade
+
          })
      })
      const response = await data.json();

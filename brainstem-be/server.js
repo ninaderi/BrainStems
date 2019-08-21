@@ -94,7 +94,8 @@ knex.schema.createTable('student', (table) => {
 		status: 1,
 		name: Activities.Activities[x].name,
 		img: Activities.Activities[x].img,
-		classRoomName: "EvolveU cohort 1"
+		classRoomName: "EvolveU cohort 1",
+		created_at: new Date(),
 	}).then(data => console.log(data))
   }
   
@@ -108,7 +109,8 @@ knex.schema.createTable('student', (table) => {
 		  status: 0,
 		  name: Activities.Activities[x].name,
 		  img: Activities.Activities[x].img,
-		classRoomName: "EvolveU cohort 2"
+		  created_at: new Date(),
+		  classRoomName: "EvolveU cohort 2"
 	  }).then(data => console.log(data))
 	}
 
@@ -126,13 +128,18 @@ app.get('/activities', (req, res) => {
 app.post('/addActivity', (req, res) => {
 	
 	let activityCode = util.generateActivityCode(8);
+	console.log("are you working", req.body)
 	try {
 	knex('activity').insert({
 		activityCode: activityCode,
 	wvId: req.body.wvId,
 	expiry: "TBD",
 	status: true,
-	classRoomName: req.body.classRoomName
+	classRoomName: req.body.classRoomName,
+	grade: req.body.grade,
+	created_at: new Date(),
+	img: req.body.img
+
 	}).then(data => res.send({status: "activity added"}))
 	
 } catch(err) {
