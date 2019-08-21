@@ -5,6 +5,7 @@ import ExistingActivitiesComp from './ExistingActivitiesComp'
 import CompletedActivitiesComp from './CompletedActivitiesComp'
 import wonderville from "../images/wonderville.png";
 import AddActivityComp from "./AddActivityComp"
+import logInComp from "../Containers/logInComp"
 import mindfuel_logo from "../images/mindfuel_logo.png";
 import { NavLink, Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
@@ -53,7 +54,7 @@ class DashboardComp extends React.Component {
                         <Route path='/newActivity' allActivities2 = {this.state.activities} render = {(props) => <NewActivityComp allActivities = {this.state.activities}/>} />
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
-                        <Route path='/studentlogin' component={picLogin} />
+                        <Route path='/studentlogin' component={logInComp} />
                         <Route exact path='/addactivity/:activityId' allActivities2 = {this.state.activities} render = {(props) => <AddActivityComp allActivities = {this.state.activities}/>} />
 
                     
