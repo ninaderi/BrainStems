@@ -148,6 +148,14 @@ app.post('/addActivity', (req, res) => {
 	
 })
 
+app.post('/verifyCode', (req, res) => {
+	console.log("the verify function is running")
+	let data = knex('activity').where({activityCode: req.body.activityCode}).then(data => {
+		res.send({data: data[0]}) })
+	
+	
+})
+
 app.get('/exsistingActivities', (req, res) => {
 	
 let subquery = knex('activity').select()
@@ -157,7 +165,7 @@ let subquery = knex('activity').select()
 
 app.post('/logIn', (req, res) => {
 	const {fname, lname, password} = req.body;
-	let subquery = knex('student').where({fname: fname, lname: lname}).then(data => {
+	let data = knex('student').where({fname: fname, lname: lname}).then(data => {
 		if (data.length === 0) {
 			res.send({"response": "user does not exists"})
 		}else {

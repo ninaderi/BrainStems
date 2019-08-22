@@ -11,7 +11,7 @@ class ExistingActivitiesComp extends React.Component {
     }
 
     componentDidMount = async () => {
-        let response = await fetch("http://localhost:4000/exsistingActivities");
+    let response = await fetch("http://localhost:4000/exsistingActivities");
     response = await response.json();
     response = response.data.filter(x => x.status === 1)
     this.setState({ activities: response});
