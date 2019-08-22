@@ -15,8 +15,10 @@ class LogInComp extends Component {
 
 	}
 
-    handleChange = (event) => {
-        this.setState({activityCode: event.target.value});
+    handleChange = (e) => {
+        this.setState({ 
+			[e.target.id]: e.target.value
+		});
       }
 
     handleClick = async () => {
@@ -28,7 +30,7 @@ class LogInComp extends Component {
          })
      })
      const response = await data.json();
-     console.log(response.data.status)
+
 
      response.data.status === 1
      ? this.setState({displayActivityInput: false, displayLogIn: true })
@@ -36,21 +38,60 @@ class LogInComp extends Component {
      return response;
     }
 
+    handleLogin = async (arg) => {
+		const data = await fetch('http://localhost:4000/login', {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({
+           password: arg,
+           fname: this.state.fname,
+           lname: this.state.lname,
+         })
+     })
+     const response = await data.json();
+     console.log(response)
+     return response;
+	}
 
+	handleRegister = async (arg) => {
+        console.log(arg)
+        console.log(this.state)
+		const data = await fetch('http://localhost:4000/register', {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({
+           password: arg,
+           fname: this.state.fname,
+           lname: this.state.lname,
+         })
+     })
+     const response = await data.json();
+     console.log(response)
+     return response;
+	}
 
 	
 render () {
-	console.log(this.state)
+console.log(this.state, "where is this guy")
 		return (
             <div>
 			{this.state.displayActivityInput
                ? <div>
-            <input type = "text" value ={this.state.activityCode} onChange={this.handleChange}></input>
+            <input type = "text" id ="activityCode" onChange={this.handleChange}></input>
             <button onClick = {this.handleClick}>Submit</button>
 			Is thais not why you aere here
 			</div>
             : null}
-           { this.state.displayLogIn ? <PicLogin /> : null}
+            <div>
+            <input onChange={this.handleChange} className="nameInput" id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
+			<input onChange={this.handleChange} className="nameInput" id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
+				<br />
+           { this.state.displayLogIn ? <PicLogin
+                                        handleRegister = {this.handleRegister}
+                                        handleLogin = {this.handleLogin}
+            /> : null}
+           
+           </div>
             </div>
 
 			)
