@@ -1,5 +1,5 @@
 import React from "react";
-import { Activities } from "../Components/Activities";
+
 import "../styles/activitiesCard.css";
 
 class AddActivityComp extends React.Component {

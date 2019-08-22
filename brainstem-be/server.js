@@ -74,7 +74,7 @@ knex.schema.createTable('student', (table) => {
 	table.string("rosterId")
 	table.string('studentName');
 	table.string('teacherName');
-	table.string('activityCode').references("code").inTable("activity");
+	table.string('activityCode').references("activityCode").inTable("activity");
 	table.integer('teacherID').references("id").inTable("teacher");
 	table.string('studentID').references("id").inTable("student");
 	table.timestamps();
@@ -151,7 +151,8 @@ app.post('/addActivity', (req, res) => {
 app.post('/verifyCode', (req, res) => {
 	console.log("the verify function is running")
 	let data = knex('activity').where({activityCode: req.body.activityCode}).then(data => {
-		res.send({data: data[0]}) })
+		res.send({data: data[0]})})
+	
 	
 	
 })

@@ -4,8 +4,6 @@ import FilterGradeComp from "../Components/FilterGradeComp";
 import FilterTopicComp from "../Components/FilterTopicComp";
 import FilterTypeComp from "../Components/FilterTypeComp";
 import Scroll from "../Components/Scroll";
-// import FilterApp from "../Components/FilterApp";
-// import { Activities } from "../Components/Activities";
 import SearchBox from "../Components/SearchBox";
 import AddActivityComp from "../Containers/AddActivityComp"
 import "../styles/NewActivityComp.css";
