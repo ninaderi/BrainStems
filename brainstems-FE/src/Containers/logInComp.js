@@ -44,8 +44,8 @@ class LogInComp extends Component {
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify({
            password: arg,
-           fname: this.state.fname,
-           lname: this.state.lname,
+           studentfname: this.state.studentfname,
+           studentlname: this.state.studentlname,
          })
      })
      const response = await data.json();
@@ -61,8 +61,8 @@ class LogInComp extends Component {
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify({
            password: arg,
-           fname: this.state.fname,
-           lname: this.state.lname,
+           studentfname: this.state.studentfname,
+           studentlname: this.state.studentlname,
          })
      })
      const response = await data.json();
@@ -108,8 +108,8 @@ console.log(this.state, "where is this guy")
                     )
                     : (<div>
                         <button onClick={this.toggleRegister}>Return to Sign In</button>
-                        <input onChange={this.handleChange} className="nameInput" id='fname' type='text' placeholder='First Name' value={this.state.fname}></input>
-                        <input onChange={this.handleChange} className="nameInput" id='lname' type='text' placeholder='Last Name' value={this.state.lname}></input>
+                        <input onChange={this.handleChange} className="nameInput" id='studentfname' type='text' placeholder='First Name' value={this.state.studentfname}></input>
+                        <input onChange={this.handleChange} className="nameInput" id='studentlname' type='text' placeholder='Last Name' value={this.state.studentlname}></input>
                         <br />
                         
                     </div>

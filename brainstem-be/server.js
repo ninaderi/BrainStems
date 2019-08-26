@@ -29,9 +29,9 @@ var knex = require('knex')({
 
 knex.schema.createTable('student', (table) => {
 	table.increments('id').primary();
-	table.specificType('password', 'integer ARRAY');
-	table.string('fname');
-	table.string('lname');
+	// table.specificType('password', 'integer ARRAY');
+	table.string('studentfname');
+	table.string('studentlname');
 	table.string('wvUId');
 	table.timestamps();
 	table.unique('wvUId');
@@ -58,9 +58,9 @@ knex.schema.createTable('student', (table) => {
  
   knex.schema.createTable('teacher', (table) => {
 	table.increments('id').primary();
-	table.string('fname');
+	table.string('teacherfname');
+	table.string('teacherlname');
 	table.string('wvID');
-	table.string('lname');
 	table.string('email');
 	table.timestamps();
 	table.unique('wvID');
@@ -72,8 +72,13 @@ knex.schema.createTable('student', (table) => {
   knex.schema.createTable('roster', (table) => {
 	table.increments('id').primary();
 	table.string("rosterId")
-	table.string('studentName');
-	table.string('teacherName');
+	table.string('studentfname');
+	table.string('studentlname');
+	table.string('password');
+
+	table.string('teacherfname');
+	table.string('teacherlname');
+
 	table.string('activityCode').references("activityCode").inTable("activity");
 	table.integer('teacherID').references("id").inTable("teacher");
 	table.string('studentID').references("id").inTable("student");
@@ -150,7 +155,7 @@ app.post('/addActivity', (req, res) => {
 
 app.post('/verifyCode', (req, res) => {
 	console.log("the verify function is running")
-	let data = knex('activity').where({activityCode: req.body.activityCode}).then(data => {
+	knex('activity').where({activityCode: req.body.activityCode}).then(data => {
 		res.send({data: data[0]})})
 	
 	
@@ -159,14 +164,14 @@ app.post('/verifyCode', (req, res) => {
 
 app.get('/exsistingActivities', (req, res) => {
 	
-let subquery = knex('activity').select()
-.then(data => {res.send({data})})
+	knex('activity').select()
+		.then(data => {res.send({data})})
 	
 })
 
 app.post('/logIn', (req, res) => {
-	const {fname, lname, password} = req.body;
-	let data = knex('student').where({fname: fname, lname: lname}).then(data => {
+	const {studentfname, studentlname, password} = req.body;
+	knex('roster').where({studentfname: studentfname, studentlname: studentlname}).then(data => {
 		if (data.length === 0) {
 			res.send({"response": "user does not exists"})
 		}else {
@@ -184,16 +189,20 @@ app.post('/logIn', (req, res) => {
 
 app.post('/register', (req, res) => {
 	
-	const {fname, lname, password} = req.body;
+	const {studentfname, studentlname, password} = req.body;
 	
-	let subquery = knex('student').where({fname: fname, lname: lname}).then(data => {
-	if (data.length === 0) {
-		knex('student').insert({fname: fname, lname: lname, password: password}).then(data => console.log("User Added"))
-		res.send({"response": "user registered"})
-	}else {
-		console.log("user exists")
-		res.send({"response": "user exists"})
-	}
+	knex('student').where({studentfname: studentfname, studentlname: studentlname}).then(data => {
+		if (data.length === 0) {
+			knex('student').insert({studentfname: studentfname, studentlname: studentlname}).then(
+				console.log("User Added to student table"))
+			knex('roster').insert({studentfname: studentfname, studentlname: studentlname, password: password}).then(
+				console.log("User Added to roster table"))
+			
+			res.send({"response": "user registered"})
+		} else {
+			console.log("user exists")
+			res.send({"response": "user exists"})
+		}
 });
 
 })
