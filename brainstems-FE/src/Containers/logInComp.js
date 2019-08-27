@@ -8,6 +8,7 @@ class LogInComp extends Component {
 		super(props) 
 		this.state = {
             activityCode: '',
+            activeRoster: '',
             displayActivityInput: true,
             displayLogIn: false,
             displayLogInDropdown: true,
@@ -20,23 +21,28 @@ class LogInComp extends Component {
 			[e.target.id]: e.target.value
 		});
       }
-
-    handleClick = async () => {
+    //////////  request activity code and receive activity object if code exists in roster table ////////
+    handleCodeSubmitClick = async () => {
         const data = await fetch('http://localhost:4000/verifyCode', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            activityCode: this.state.activityCode,
+            activityCode: this.state.activityCode
             })
         })
         const response = await data.json();  
+        // const roster = await rosterList.json();
+
         console.log("verify code response is ", response);
 
-        try {
-            response.data.status === 1
-                ? this.setState({displayActivityInput: false, displayLogIn: true })
-                : console.log("wrong activity code")
-                return response;
+        try {   ///////// check if activity status is active , i.e. status === 1 ///////
+            if (response.data.status === 1) {
+                this.setState({displayActivityInput: false, displayLogIn: true})
+                
+            } else {
+                console.log("wrong activity code")
+            }
+                // return response;
         }  
         catch(err) {
             console.log("code does not exist");
@@ -49,6 +55,7 @@ class LogInComp extends Component {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+            // activityCode: this.state.activityCode,
             password: arg,
             studentfname: this.state.studentfname,
             studentlname: this.state.studentlname,
@@ -83,6 +90,7 @@ class LogInComp extends Component {
 
 render () {
 console.log(this.state, "where is this guy")
+// console.log("active roster is ", this.state.activeRoster)
 		return (
             <div>
 			{this.state.displayActivityInput
@@ -90,7 +98,7 @@ console.log(this.state, "where is this guy")
             Enter your activity code:
             <br></br>
             <input type = "text" id ="activityCode" onChange={this.handleChange}></input>
-            <button onClick = {this.handleClick}>Submit</button>
+            <button onClick = {this.handleCodeSubmitClick}>Submit</button>
 			
 			</div>
             : null}

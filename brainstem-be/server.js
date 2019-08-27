@@ -80,7 +80,6 @@ knex.schema.createTable('student', (table) => {
 	table.string('teacherlname');
 
 	table.string('activityCode').references("activityCode").inTable("activity");
-	// table.string('activityCode');
 
 	table.integer('teacherID').references("id").inTable("teacher");
 	table.string('studentID').references("id").inTable("student");
@@ -158,10 +157,12 @@ app.post('/addActivity', (req, res) => {
 app.post('/verifyCode', (req, res) => {
 	console.log("the verify function is running")
 	knex('activity').where({activityCode: req.body.activityCode}).then(data => {
-		res.send({data: data[0]})})
-	
-	
-	
+		res.send({data: data[0]})
+	})
+	// knex('roster').where({activityCode: req.body.activityCode}).then(data => {  
+	// 	res.write({roster: data})
+	// })
+	// res.end;
 })
 
 app.get('/exsistingActivities', (req, res) => {
