@@ -23,34 +23,40 @@ class LogInComp extends Component {
 
     handleClick = async () => {
         const data = await fetch('http://localhost:4000/verifyCode', {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({
-           activityCode: this.state.activityCode,
-         })
-     })
-     const response = await data.json();  
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            activityCode: this.state.activityCode,
+            })
+        })
+        const response = await data.json();  
+        console.log("verify code response is ", response);
 
-
-     response.data.status === 1
-     ? this.setState({displayActivityInput: false, displayLogIn: true })
-     : console.log("wrong activity code")
-     return response;
+        try {
+            response.data.status === 1
+                ? this.setState({displayActivityInput: false, displayLogIn: true })
+                : console.log("wrong activity code")
+                return response;
+        }  
+        catch(err) {
+            console.log("code does not exist");
+        }
     }
+     
 
     handleLogin = async (arg) => {
 		const data = await fetch('http://localhost:4000/login', {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({
-           password: arg,
-           studentfname: this.state.studentfname,
-           studentlname: this.state.studentlname,
-         })
-     })
-     const response = await data.json();
-     console.log(response)
-     return response;
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            password: arg,
+            studentfname: this.state.studentfname,
+            studentlname: this.state.studentlname,
+            })
+    })
+        const response = await data.json();
+        console.log(response)
+        return response;
 	}
 
 	handleRegister = async (arg) => {
@@ -61,6 +67,7 @@ class LogInComp extends Component {
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify({
            password: arg,
+           activityCode: this.state.activityCode,
            studentfname: this.state.studentfname,
            studentlname: this.state.studentlname,
          })

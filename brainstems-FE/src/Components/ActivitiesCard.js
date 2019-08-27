@@ -20,7 +20,7 @@ handleClick = () => {
 
 render() {
 
-    console.log(this.props, "props from activity card")
+    // console.log(this.props, "props from activity card")
     return (
         <div className = "activityDiv">
         <div className = "topSection">

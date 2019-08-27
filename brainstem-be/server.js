@@ -80,6 +80,8 @@ knex.schema.createTable('student', (table) => {
 	table.string('teacherlname');
 
 	table.string('activityCode').references("activityCode").inTable("activity");
+	// table.string('activityCode');
+
 	table.integer('teacherID').references("id").inTable("teacher");
 	table.string('studentID').references("id").inTable("student");
 	table.timestamps();
@@ -164,7 +166,7 @@ app.post('/verifyCode', (req, res) => {
 
 app.get('/exsistingActivities', (req, res) => {
 	
-	knex('activity').select()
+	knex('activity').where({status: 1})
 		.then(data => {res.send({data})})
 	
 })
@@ -176,7 +178,7 @@ app.post('/logIn', (req, res) => {
 			res.send({"response": "user does not exists"})
 		}else {
 			if(data[0].password === password) {
-				res.send({"response": "Loggged In"})
+				res.send({"response": "Logged In"})
 
 		}else {
 			res.send({"response": "invalid Password"})
@@ -189,14 +191,14 @@ app.post('/logIn', (req, res) => {
 
 app.post('/register', (req, res) => {
 	
-	const {studentfname, studentlname, password} = req.body;
+	const {studentfname, studentlname, activityCode, password} = req.body;
 	
 	knex('student').where({studentfname: studentfname, studentlname: studentlname}).then(data => {
 		if (data.length === 0) {
 			knex('student').insert({studentfname: studentfname, studentlname: studentlname}).then(
 				console.log("User Added to student table"))
-			knex('roster').insert({studentfname: studentfname, studentlname: studentlname, password: password}).then(
-				console.log("User Added to roster table"))
+			knex('roster').insert({studentfname: studentfname, studentlname: studentlname, password: password, activityCode: activityCode}).then(
+				console.log("User Added to roster table", activityCode))
 			
 			res.send({"response": "user registered"})
 		} else {
