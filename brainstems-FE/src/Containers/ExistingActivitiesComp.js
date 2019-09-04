@@ -17,7 +17,6 @@ class ExistingActivitiesComp extends React.Component {
     this.setState({ activities: response});
     }
     render() {
-        console.log('from exist')
         return(
             <div id="activityArea">
                 <h1 id = "activityAreaHeader" >Existing Activities</h1>

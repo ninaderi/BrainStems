@@ -25,7 +25,8 @@ class NewActivityComp extends Component {
       filterBySearchActive: false,
       filterByTopicActive: false,
       filterByTypeActive: false,
-      showActivityComp: false
+      showActivityComp: false,
+      showFilterComp: false,
     };
     this.initialCounter = 0;
   }
@@ -107,9 +108,11 @@ class NewActivityComp extends Component {
                   showActivityComp: true
     })
   }
-  render() {
 
-    console.log(this.state)
+  handleFilterButton = () => {
+    this.setState({showFilterComp: !this.state.showFilterComp})
+  }
+  render() {
    
     this.filterByGradeArray = this.state.filterByGradeActive
       ? this.filterByGradeArray
@@ -131,6 +134,8 @@ class NewActivityComp extends Component {
     ) : (
       <div className="tc">
       {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} /> : null}
+      <button onClick = {this.handleFilterButton}>Filter</button>
+        {this.state.showFilterComp && 
         <div className="filterComps">
           {/* <FilterApp className="filterbox" /> */}
 
@@ -150,7 +155,7 @@ class NewActivityComp extends Component {
             className="filterbox"
             onCheckFilterGrade={this.onCheckFilterGrade}
           />
-        </div>
+        </div>}
         <br />
         <div className="activityCardComp">
           <Scroll>

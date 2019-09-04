@@ -3,11 +3,9 @@ import ActivitiesCard from "./ActivitiesCard";
 
 const ActivitiesCardList = ({ activities, handleClick }) => {
 
-    console.log(activities)
   return (
     <div className="activityScrollDiv" >
       {activities && activities.map((activity, i) => {
-          console.log(activity)
         return (
           <ActivitiesCard
             key={i}

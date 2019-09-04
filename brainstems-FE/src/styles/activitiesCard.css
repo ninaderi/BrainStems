@@ -8,18 +8,33 @@
 }
 
 #activityImage {
-    width: 20%;
+    width: 100%;
     border: 1px black solid;
     margin: 20px;
+    height: auto;
+    -webkit-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
+box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
+
 }
 
 table {
     height: 100%;
     border-spacing: 10px 0px;
     margin: 5px;
+    border-style: none;
+    border-color: white;
 }
 
-tr:nth-child(even) {background: #CCC;}
+table, td, th {
+    border-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 22px;
+}
+
+tr:nth-child(even) {background: #F2E8FA;
+color: black;}
 tr:nth-child(odd) {background: #FFF;}
 
 .activityCode {
@@ -27,6 +42,7 @@ tr:nth-child(odd) {background: #FFF;}
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 };
 
 .button {
@@ -36,6 +52,7 @@ tr:nth-child(odd) {background: #FFF;}
 .topSection{
 display: flex;
 flex-direction: row;
+padding: 40px;
 }
 
 .image {
@@ -44,3 +61,8 @@ flex-direction: row;
     margin: 20px;
 }
 
+
+.textField {
+    height: 100%;
+    margin: 20px;
+}
