@@ -112,6 +112,10 @@ class NewActivityComp extends Component {
   handleFilterButton = () => {
     this.setState({showFilterComp: !this.state.showFilterComp})
   }
+
+  handleShowActivity = () => {
+    this.setState({showActivityComp: false})
+  }
   render() {
    
     this.filterByGradeArray = this.state.filterByGradeActive
@@ -133,6 +137,7 @@ class NewActivityComp extends Component {
       <h1>No Activities Found ...</h1>
     ) : (
       <div className="tc">
+     {this.state.showActivityComp && <button onClick = {this.handleShowActivity}>Close</button>}
       {this.state.showActivityComp ? <AddActivityComp activity = {this.state.newActivity} /> : null}
       <button onClick = {this.handleFilterButton}>Filter</button>
         {this.state.showFilterComp && 

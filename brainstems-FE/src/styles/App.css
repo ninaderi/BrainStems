@@ -178,8 +178,8 @@ RESPONSIVE SECTION
 }
 
 h1 {
-  background-color: #532380;
-  color: white;
+  background-color: white;
+  color: #532380;
   font-weight: bold;
 }
 
@@ -189,8 +189,8 @@ h2{
 }
 
 button {
-  background-color: white;
-  color: #532380;
+  background-color: #532380;
+  color: white;
   font-weight: bold;
   padding: 5px;
   margin: 5px;
@@ -198,14 +198,20 @@ button {
 }
 
 p {
-background-color:#532380;
-color: white;
+background-color:white;
+color: #532380;
 font-weight: bold;
 padding: 5px;
-
-
 }
 
+
+input {
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  border-color: #532380;
+  color: #532380;
+}
 /*****************
 ACTIVITY AREA SECTIONS
 **********************/
@@ -219,4 +225,9 @@ ACTIVITY AREA SECTIONS
 
 tc {
   width: 75vw;
+}
+
+.addActivityComp {
+
+  padding: 50px;
 }
