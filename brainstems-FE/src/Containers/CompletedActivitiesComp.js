@@ -21,7 +21,7 @@ class CompletedActivitiesComp extends React.Component {
             console.log('from exist')
             return(
                 <div id="activityArea">
-                    <h1 id = "activityAreaHeader" >Existing Activities</h1>
+                    <h1 id = "activityAreaHeader" >Completed Activities</h1>
                     <hr/>
                     <div id = "activityAreaCards">
                         <ActivitiesCardList activities = {this.state.activities}/>

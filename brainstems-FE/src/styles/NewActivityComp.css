@@ -13,6 +13,7 @@
   width: 25%;
   text-align: left;
   padding: 2px;
+  margin: 5px;
   align-content: left;
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -45,6 +46,7 @@ input::placeholder {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 73vw
 
 }
 .card {

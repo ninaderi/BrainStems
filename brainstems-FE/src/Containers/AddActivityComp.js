@@ -40,21 +40,21 @@ class AddActivityComp extends React.Component {
     const { activity } = this.props;
 
     return (
-      <div>
+      <div className = "addActivityComp">
         <div>
           <img src={activity.img} alt="activity img" className="image" />
         </div>
         <div>
           <h1>{activity.name}</h1>
           <div className="details">
-            <p>Type: {activity.type}</p>
-            <p>Topic: {activity.topic}</p>
-            <p>Duration: {activity.time}</p>
-            <p>Grade: {activity.grade}</p>
-            <p>Activity Tags</p>
+            <h2>Type: {activity.type}</h2>
+            <h2>Topic: {activity.topic}</h2>
+            <h2>Duration: {activity.time}</h2>
+            <h2>Grade: {activity.grade}</h2>
+            <h2>Activity Tags</h2>
             <div>
-              Class Name <input type="text" name = "classRoomName" onChange = {this.handleChange}/> 
-              Other Info <input type="text" name = "otherInfo" onChange = {this.handleChange}/>
+               <input type="text" name = "classRoomName" onChange = {this.handleChange} placeholder = "Class Name"/> 
+               <input type="text" name = "otherInfo" onChange = {this.handleChange} placeholder = "Other Info"/>
             </div>
           </div>
           <button className="button" onClick = {this.hanldeClick}>Open Activity</button>

@@ -101,6 +101,7 @@ NAV SECTION
   font-weight: bold;
   font-size: 23px;
   font-family: "chevin pro", sans-serif;
+  border-style: solid;
 }
 
 #navBar > ul > li:hover a{
@@ -176,7 +177,41 @@ RESPONSIVE SECTION
   }
 }
 
+h1 {
+  background-color: white;
+  color: #532380;
+  font-weight: bold;
+}
 
+h2{
+  color: #532380;
+  font-weight: bold;
+}
+
+button {
+  background-color: #532380;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  margin: 5px;
+  border-color: #532380;
+}
+
+p {
+background-color:white;
+color: #532380;
+font-weight: bold;
+padding: 5px;
+}
+
+
+input {
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  border-color: #532380;
+  color: #532380;
+}
 /*****************
 ACTIVITY AREA SECTIONS
 **********************/
@@ -184,5 +219,15 @@ ACTIVITY AREA SECTIONS
 #activityAreaCards {
   overflow: scroll;
   height: 100vh;
+ 
   
+}
+
+tc {
+  width: 75vw;
+}
+
+.addActivityComp {
+
+  padding: 50px;
 }

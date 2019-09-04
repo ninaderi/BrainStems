@@ -20,7 +20,6 @@ handleClick = () => {
 
 render() {
 
-    console.log(this.props, "props from activity card")
     return (
         <div className = "activityDiv">
         <div className = "topSection">
@@ -48,7 +47,7 @@ render() {
                 </table>
             </div>
             <div className = "activityCode">
-                <h1>Activity Code</h1>
+                <h2>Activity Code</h2>
                 <p>{this.props.activityCode}</p>
                 <button className = "button">Close Activity</button>
                 {this.state.displayDetails 
