@@ -15,7 +15,8 @@ class DashboardComp extends React.Component {
         super();
         this.state = {
             activePage: "",
-            activities: "oldDashstate"
+            activities: "oldDashstate",
+            showTeacherNav: true,
         };
     };
 
@@ -26,6 +27,10 @@ class DashboardComp extends React.Component {
         this.setState({activities: response})
     }
 
+    handleClick = () => {
+        this.setState({showTeacherNav: false})
+
+    }
  
 
     render() {
@@ -38,17 +43,18 @@ class DashboardComp extends React.Component {
                     </header>
 
                     <header id="mf_header">
-                        <NavLink activeClassName="activeNavLink" id="studentLoginBtn2" to='/studentlogin'>Student Login</NavLink>
+                        <NavLink activeClassName="activeNavLink" id="studentLoginBtn2" to='/studentlogin' onClick = {this.handleClick}>Student Login</NavLink>
                         <img id="mindfuel_logo" src={mindfuel_logo} alt="mindfuel_logo" height="80px" />
                     </header>  
 
+                    {this.state.showTeacherNav &&
                     <div id='navBar'>
                         <ul>
                             <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/newActivity'>ADD NEW ACTIVITY</NavLink></li>
                             <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
                             <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
                         </ul>
-                    </div>
+                    </div>}
                     <div id='bodyContainer'>
                     
                         {/* <Route exact path='/' render = {(props) => <NewActivityComp allActivities = {this.state.activities}/>}/>    */}

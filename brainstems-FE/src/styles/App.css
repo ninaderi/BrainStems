@@ -72,6 +72,9 @@ NAV SECTION
 #navBar {
   grid-area: menu;
   margin-top: 0px;
+  border-style: solid;
+  border-color: white;
+  border-right-color: #532380;
 }
 
 
@@ -102,6 +105,7 @@ NAV SECTION
   font-size: 23px;
   font-family: "chevin pro", sans-serif;
   border-style: solid;
+  width: 300px
 }
 
 #navBar > ul > li:hover a{
@@ -126,6 +130,7 @@ a:focus {  /* need this to override Navlink std color of blue */
   grid-area: activities;
   display: flex;
   max-height: 100vh;
+  justify-content: center;
 }
 
 #activityArea {
@@ -223,11 +228,21 @@ ACTIVITY AREA SECTIONS
   
 }
 
-tc {
-  width: 75vw;
+.tc {
+  display: flex;
+  width: 73vw;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .addActivityComp {
 
   padding: 50px;
+}
+
+.logInContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

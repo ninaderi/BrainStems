@@ -38,9 +38,9 @@ class PicLogin extends Component {
 
 	
 render () {
-	console.log(this.state)
+	console.log(this.props)
 		return (
-			<div>
+			<div className = "logInContainer">
 			
 				<div className = "picContainer">
 					<img src = {soccer} alt = "soccer" onClick={this.onClickPixels} className = "pixels" name = "soccer" id = "soccer" />
@@ -53,7 +53,7 @@ render () {
 					<img src = {bowling} alt = "bowling" onClick = {this.onClickPixels} className = "pixels" name = "bowling" id = "bowling"/>
 					<img src = {golf} alt = "golf" onClick = {this.onClickPixels} className = "pixels" name = "golf" id = "golf"/>
 				</div>
-				{this.props.buttonView === 'login'
+				{this.props.buttonView
 					? <button onClick={() => this.props.handleLogin(this.inputPassword)} className = "btn btn-md btn-accent"> Log In </button>
 					: <button onClick={() => this.props.handleRegister(this.inputPassword)} className = "btn btn-md btn-default"> Register </button>
 				}

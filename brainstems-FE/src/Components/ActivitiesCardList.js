@@ -1,7 +1,7 @@
 import React from "react";
 import ActivitiesCard from "./ActivitiesCard";
 
-const ActivitiesCardList = ({ activities, handleClick }) => {
+const ActivitiesCardList = ({ activities, handleClick, showClose }) => {
 
   return (
     <div className="activityScrollDiv" >
@@ -16,6 +16,7 @@ const ActivitiesCardList = ({ activities, handleClick }) => {
             img={activities[i].img}
             activityCode = {activities[i].activityCode}
             handleClick = {handleClick}
+            showClose = {showClose}
           />
         );
       })}

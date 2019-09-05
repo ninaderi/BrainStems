@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  justify-content: flex-start;
 }
 
 .heading {
@@ -10,10 +15,10 @@
 
 .filterbox {
   color: green;
-  width: 25%;
+  width: 30%;
   text-align: left;
   padding: 2px;
-  margin: 5px;
+  margin: 50px;
   align-content: left;
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -46,7 +51,8 @@ input::placeholder {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 73vw
+  width: 73vw;
+  justify-content: flex-start;
 
 }
 .card {
@@ -55,8 +61,8 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px 15px 3px #A5A5A5;
-  margin: 20px;
-  width: 275px;
+  margin: 50px;
+  width: 320px;
   height: 230px;
 }
 
@@ -77,4 +83,8 @@ input::placeholder {
   font-weight: bold;
   letter-spacing: 1px;
 
+}
+
+nav {
+  border-right-color: #532380;
 }

@@ -24,7 +24,7 @@ class CompletedActivitiesComp extends React.Component {
                     <h1 id = "activityAreaHeader" >Completed Activities</h1>
                     <hr/>
                     <div id = "activityAreaCards">
-                        <ActivitiesCardList activities = {this.state.activities}/>
+                        <ActivitiesCardList activities = {this.state.activities} showClose = {false}/>
                     </div>
                 </div>
             )
