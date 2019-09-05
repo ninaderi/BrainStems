@@ -47,14 +47,14 @@ class DashboardComp extends React.Component {
                         <img id="mindfuel_logo" src={mindfuel_logo} alt="mindfuel_logo" height="80px" />
                     </header>  
 
-                    {this.state.showTeacherNav &&
+                    {this.state.showTeacherNav ?
                     <div id='navBar'>
                         <ul>
                             <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/newActivity'>ADD NEW ACTIVITY</NavLink></li>
                             <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/existingactivities'>EXISTING ACTIVITIES</NavLink></li>
                             <li><NavLink activeClassName="activeNavLink" className="menuitem" to='/completedactivities'>COMPLETED ACTIVITIES</NavLink></li>
                         </ul>
-                    </div>}
+                    </div>: null}
                     <div id='bodyContainer'>
                     
                         {/* <Route exact path='/' render = {(props) => <NewActivityComp allActivities = {this.state.activities}/>}/>    */}

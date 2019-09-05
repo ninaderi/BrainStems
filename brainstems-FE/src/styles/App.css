@@ -130,7 +130,7 @@ a:focus {  /* need this to override Navlink std color of blue */
   grid-area: activities;
   display: flex;
   max-height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #activityArea {
