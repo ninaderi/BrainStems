@@ -49,7 +49,8 @@ render() {
             <div className = "activityCode">
                 <h2>Activity Code</h2>
                 <p>{this.props.activityCode}</p>
-                <button className = "button">Close Activity</button>
+                {this.props.showClose && 
+                <button className = "button">Close Activity</button>}
                 {this.state.displayDetails 
                 ?  <button className = "button" onClick = {this.handleClick}>Close Details</button>
                 :<button className = "button" onClick = {this.handleClick}>Details</button>

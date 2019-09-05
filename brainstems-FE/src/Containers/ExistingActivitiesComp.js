@@ -22,7 +22,7 @@ class ExistingActivitiesComp extends React.Component {
                 <h1 id = "activityAreaHeader" >Existing Activities</h1>
                 <hr/>
                 <div id = "activityAreaCards">
-                    <ActivitiesCardList activities = {this.state.activities}/>
+                    <ActivitiesCardList activities = {this.state.activities} showClose = {true} />
                 </div>
             </div>
         )

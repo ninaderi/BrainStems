@@ -80,9 +80,9 @@ console.log(this.state, "where is this guy")
             <div>
 			{this.state.displayActivityInput
                ? <div>
-            Enter your activity code:
+            <h1>Enter your activity code:</h1>
             <br></br>
-            <input type = "text" id ="activityCode" onChange={this.handleChange}></input>
+            <input type = "text" id ="activityCode" onChange={this.handleChange}></input><br/>
             <button onClick = {this.handleClick}>Submit</button>
 			
 			</div>
@@ -119,6 +119,7 @@ console.log(this.state, "where is this guy")
              <PicLogin
                handleRegister={this.handleRegister}
                handleLogin={this.handleLogin}
+               buttonView = {this.state.displayLogInDropdown}
              />
            </div>
          ) : null}

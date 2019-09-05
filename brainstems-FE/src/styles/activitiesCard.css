@@ -1,10 +1,14 @@
 .activityDiv {
     background-color:  white;
-    border-bottom: 3px solid #532380;
     min-height: 30%;
     display: flex;
     flex-direction: column;
-    margin: 5px;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
+box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
 }
 
 #activityImage {
@@ -12,9 +16,7 @@
     border: 1px black solid;
     margin: 20px;
     height: auto;
-    -webkit-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
--moz-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
-box-shadow: -2px -1px 18px -2px rgba(0,0,0,0.75);
+
 
 }
 
@@ -37,12 +39,15 @@ tr:nth-child(even) {background: #F2E8FA;
 color: black;}
 tr:nth-child(odd) {background: #FFF;}
 
-.activityCode {
-    margin-left: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+#activityCode {
+    background-color: white;
+  padding: 5px;
+  margin: 5px;
+  border-color: #532380;
+  color: white;
+  font-weight: bolder;
+  font-size:50pt;
+  background-color:#532380; 
 };
 
 .button {
@@ -66,3 +71,4 @@ padding: 40px;
     height: 100%;
     margin: 20px;
 }
+
