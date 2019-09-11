@@ -18,8 +18,21 @@ handleClick = () => {
     : this.setState({displayDetails: true})
 }    
 
-render() {
+closeActivity  = async () => {
+    console.log(this.props)
+    const data = await fetch('http://localhost:4000/closeActivity', {
+   method: "POST",
+   headers: { "Content-Type": "application/json" },
+   body: JSON.stringify({
+       activityCode: this.props.activityCode,
+     })
+ })
+ const response = await data.json();  
 
+
+ return response;
+}
+render() {
     return (
         <div className = "activityDiv">
         <div className = "topSection">
@@ -50,7 +63,7 @@ render() {
                 <h2>Activity Code</h2>
                 <p>{this.props.activityCode}</p>
                 {this.props.showClose && 
-                <button className = "button">Close Activity</button>}
+                <button className = "button" onClick = {this.closeActivity}>Close Activity</button>}
                 {this.state.displayDetails 
                 ?  <button className = "button" onClick = {this.handleClick}>Close Details</button>
                 :<button className = "button" onClick = {this.handleClick}>Details</button>

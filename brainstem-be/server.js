@@ -198,6 +198,15 @@ app.post('/register', (req, res) => {
 
 })
 
+app.post('/closeActivity', (req, res) => {
+	console.log(req.body)
+	knex('activity')
+  .where('activityCode', '=', req.body.activityCode)
+  .update({ status: 0 }).then(data => console.log("success closing activity"))
+	res.send({test: "test"})
+
+})
+
 const PORT = 4000;
 app.listen(PORT, function () {
 	console.log(`server ready and listening on ${PORT}`);
