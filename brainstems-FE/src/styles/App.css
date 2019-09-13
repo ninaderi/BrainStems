@@ -232,7 +232,7 @@ ACTIVITY AREA SECTIONS
   display: flex;
   width: 73vw;
   flex-direction: column;
-  /* justify-content: center; */
+ height: 100%;
   align-items: center;
 }
 

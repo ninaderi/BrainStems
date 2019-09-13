@@ -13,18 +13,12 @@ import "../styles/picLogin.css"
 class PicLogin extends Component {
 	constructor(props) {
 		super(props) 
-		this.state = {
-			inputPassword: "",
-			logIn: false,
-			buttonView: 'login' 
-		}
 		this.inputPassword = ''
 
 	}
 	
 
 	onClickPixels = (e) => {
-		console.log(e.target.name)
 		this.inputPassword += (e.target.name)
 		document.getElementById(e.target.name).className += " clicked";
 	}
@@ -38,7 +32,6 @@ class PicLogin extends Component {
 
 	
 render () {
-	console.log(this.props)
 		return (
 			<div className = "logInContainer">
 			
