@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "../styles/activitiesCard.css"
 import vol from "../images/vol.jpg"
+import { PassThrough } from "stream"
 
 class ActivitiesCard extends Component {
 
@@ -9,14 +10,42 @@ constructor() {
     super()
     this.state = {
         displayDetails: false,
+        activeStudents: []
     }
 
 }
-handleClick = () => {
-    this.state.displayDetails 
-    ? this.setState({displayDetails: false})
-    : this.setState({displayDetails: true})
+
+
+getActiveStudents = async () => {
+    const data = await fetch('http://localhost:4000/activeStudents', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            activityCode: this.props.activityCode
+          })
+      })
+      const response = await data.json();
+      console.log('list is ', response)
+      return response;
+
+    
+
+}
+
+handleClick = async () => {
+    if (this.state.displayDetails) {
+        this.setState({displayDetails: false})
+
+    } else {
+        this.setState({
+            displayDetails: true,
+            activeStudents: await this.getActiveStudents()
+        
+    })
+    }
 }    
+
+
 
 closeActivity  = async () => {
     console.log(this.props)
@@ -33,6 +62,20 @@ closeActivity  = async () => {
  return response;
 }
 render() {
+    // console.log('state is ', this.state.activeStudents)
+    // const studentList = this.state.activeStudents.map(x => {
+    //     return (
+    //         <tr>
+    //             <td>{x.fname}</td>
+    //             <td>{x.lname}</td>
+    //             <td>99%</td>
+    //             <td>Info</td>
+    //         </tr>
+
+    //     )
+        
+    // })
+    
     return (
         <div className = "activityDiv">
         <div className = "topSection">
@@ -80,26 +123,13 @@ render() {
                     <tbody>
                         
                         <tr>
-                            <th>Student Name</th>
-                            <th>Date Assigned</th>
-                            <th>Date Closed</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date Joined</th>
                             <th>Progress</th>
                             <th>More Info</th>
                         </tr>
-                        <tr>
-                            <td>Student 1</td>
-                            <td>2019-06-01</td>
-                            <td>2019-06-03</td>
-                            <td>99%</td>
-                            <td>Info</td>
-                        </tr>
-                        <tr>
-                            <td>Student 2</td>
-                            <td>2019-06-01</td>
-                            <td>2019-06-03</td>
-                            <td>45%</td>
-                            <td>Info</td>
-                        </tr>
+
                     </tbody>
                 </table>
 
