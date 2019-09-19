@@ -42,6 +42,11 @@ img {
 	opacity: 0.2;
 }
 
+/* added this as it was being overridden and arrow was not showing on select box */
+select {
+	-webkit-appearance: menulist;
+}
+
 /*
 .btn {
 	color: white;

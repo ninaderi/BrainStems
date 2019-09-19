@@ -81,18 +81,20 @@ class LogInComp extends Component {
 
   setRedirect = () => {
     this.setState({ isLoggedIn: true });
+    console.log("student logged in!");
   };
 
   logInRedirect = () => {
     if (this.state.isLoggedIn === true) {
+      console.log("student already logged in");
       return <Redirect to="/activity" />;
     }
   };
 
   render() {
-    if (!this.state.students) return null;
-    const students = this.state.students.response.map(x => {
-      return <option value={x.wvUId}>{x.fname}</option>;
+    if (!this.state.students) return null;  // won't this return null for entire component?
+    const students = this.state.students.response.map((x, i) => {
+      return <option key={i} value={x.wvUId}>{x.fname} {x.lname}</option>;
     });
     return (
       <div>
@@ -116,8 +118,10 @@ class LogInComp extends Component {
             <div>
               EXISTING STUDENTS IN THIS ACTIVITY:
               {this.state.displayLogInDropdown ? (
-                <div>
-                  <select id="studentId">{students}</select>
+                <div  className='dropdown'>
+                  <select id="studentId">
+                    {students}
+                  </select>
                   <button onClick={this.toggleRegister}>Sign Up</button>
                 </div>
               ) : (

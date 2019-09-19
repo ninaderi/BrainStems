@@ -141,7 +141,7 @@ for (let x = 0; x < 3; x++) {
     .insert({
       fname: Students.Students[x].fname,
       lname: Students.Students[x].lname,
-      password: Students.Students[x].password,
+      password: Students.Students[x].password,  // how do we know which activity this relates too?
       wvUId: Students.Students[x].wvUId,
       created_at: new Date()
     })
