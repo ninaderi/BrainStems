@@ -21,7 +21,8 @@ class AddActivityComp extends React.Component {
         wvId: this.props.activity.id,
         otherInfo: this.state.otherInfo,
         img: this.props.activity.img,
-        grade: this.props.activity.grade
+        grade: this.props.activity.grade,
+        name: this.props.activity.name
 
          })
      })

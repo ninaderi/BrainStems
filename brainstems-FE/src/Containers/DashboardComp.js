@@ -62,7 +62,6 @@ class DashboardComp extends React.Component {
                         <Route path='/existingactivities' component={ExistingActivitiesComp} />
                         <Route path='/completedactivities' component={CompletedActivitiesComp} />
                         <Route path='/studentlogin' component={logInComp} />
-                        <Route exact path='/addactivity/:activityId' allActivities2 = {this.state.activities} render = {(props) => <AddActivityComp allActivities = {this.state.activities}/>} />
                         <Route exact path='/activity' component = {ActivityComp}/>
 
                     

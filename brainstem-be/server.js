@@ -33,6 +33,7 @@ knex.schema
     table.string("fname");
     table.string("lname");
     table.string("wvUId");
+    table.string("activityCode");
     table.timestamps();
     table.unique("wvUId");
   })
@@ -141,7 +142,7 @@ for (let x = 0; x < 3; x++) {
     .insert({
       fname: Students.Students[x].fname,
       lname: Students.Students[x].lname,
-      password: Students.Students[x].password,
+      password: Students.Students[x].password,  // how do we know which activity this relates too?
       wvUId: Students.Students[x].wvUId,
       created_at: new Date()
     })
@@ -168,8 +169,10 @@ app.post("/addActivity", (req, res) => {
         classRoomName: req.body.classRoomName,
         grade: req.body.grade,
         created_at: new Date(),
-        img: req.body.img
+        img: req.body.img,
+        name: req.body.name
       })
+
       .then(data => res.send({ status: "activity added" }));
   } catch (err) {
     console.log(err);
@@ -210,18 +213,18 @@ app.post("/logIn", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  const { fname, lname, password } = req.body;
+  const { fname, lname, password, activityCode } = req.body;
 
   let subquery = knex("student")
-    .where({ fname: fname, lname: lname })
+    .where({ fname: fname, lname: lname, activityCode: activityCode })
     .then(data => {
       if (data.length === 0) {
         knex("student")
-          .insert({ fname: fname, lname: lname, password: password })
-          .then(data => console.log("User Added"));
+          .insert({ fname: fname, lname: lname, password: password, activityCode: activityCode })
+          .then(data => console.log("New User Added"));
         res.send({ response: "user registered" });
       } else {
-        console.log("user exists");
+        console.log("user exists for that activity already");
         res.send({ response: "user exists" });
       }
     });
@@ -250,6 +253,18 @@ app.get("/studentList", (req, res) => {
   }
 });
 
+app.post("/activeStudents", (req, res) => {
+  try {
+    const list = knex("student")
+      .where("activityCode", "=", req.body.activityCode)
+      .then(data => res.send({ response: data }))
+    
+
+  } catch (err) {
+    console.log(err);
+  }
+
+})
 const PORT = 4000;
 app.listen(PORT, function() {
   console.log(`server ready and listening on ${PORT}`);

@@ -34,9 +34,9 @@ class LogInComp extends Component {
       })
     });
     const response = await data.json();
-
+    console.log('response is ',response)
     response.data.status === 1
-      ? this.setState({ displayActivityInput: false, displayLogIn: true })
+      ? this.setState({ displayActivityInput: false, displayLogIn: true, activityName: response.data.name })
       : console.log("wrong activity code");
     return response;
   };
@@ -64,6 +64,7 @@ class LogInComp extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         password: arg,
+        activityCode: this.state.activityCode,
         fname: this.state.fname,
         lname: this.state.lname
       })
@@ -81,18 +82,20 @@ class LogInComp extends Component {
 
   setRedirect = () => {
     this.setState({ isLoggedIn: true });
+    console.log("student logged in!");
   };
 
   logInRedirect = () => {
     if (this.state.isLoggedIn === true) {
+      console.log("student already logged in");
       return <Redirect to="/activity" />;
     }
   };
 
   render() {
-    if (!this.state.students) return null;
-    const students = this.state.students.response.map(x => {
-      return <option value={x.wvUId}>{x.fname}</option>;
+    if (!this.state.students) return null;  // won't this return null for entire component?
+    const students = this.state.students.response.map((x, i) => {
+      return <option key={i} value={x.wvUId}>{x.fname} {x.lname}</option>;
     });
     return (
       <div>
@@ -114,10 +117,12 @@ class LogInComp extends Component {
         <div>
           {this.state.displayLogIn ? (
             <div>
-              EXISTING STUDENTS IN THIS ACTIVITY:
+              EXISTING STUDENTS IN ACTIVITY {this.state.activityName} ({this.state.activityCode}):
               {this.state.displayLogInDropdown ? (
-                <div>
-                  <select id="studentId">{students}</select>
+                <div  className='dropdown'>
+                  <select id="studentId">
+                    {students}
+                  </select>
                   <button onClick={this.toggleRegister}>Sign Up</button>
                 </div>
               ) : (
